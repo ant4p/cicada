@@ -1,0 +1,38 @@
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.37;
+  height: 30px;
+  border-radius: 4px;
+  white-space: nowrap;
+  user-select: none;
+  padding-inline: 16px;
+  border: 1px solid #353535;
+  transition: color, background-color 0.25s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-main);
+      color: var(--color-main-2-dark)
+    }
+  }
+
+  &.is-big {
+    height: 50px;
+    font-weight: 500;
+    color: var(--color-main-2-dark);
+    background-color: var(--color-main);
+    padding-inline: 30px;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: transparent;
+        color: var(--color-main)
+      }
+    }
+  }
+}

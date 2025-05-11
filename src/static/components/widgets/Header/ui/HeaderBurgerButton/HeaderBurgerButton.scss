@@ -1,0 +1,61 @@
+$buttonWidth: 48px;
+$buttonHeight: 48px;
+$buttonColor: var(--color-main);
+$lineThickness: 2px;
+$transitionSpeed: .3s;
+$transitionEasing: ease-in-out;
+
+.burger-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  border-radius: 4px;
+  background-color: var(--color-main-2);
+
+  color: $buttonColor;
+  font-size: 0;
+
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: $lineThickness;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background: currentColor;
+
+    transform: translate(-50%, -50%);
+    transition: transform $transitionSpeed $transitionEasing;
+  }
+
+  &.is-active {
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  &__center {
+    width: 32px;
+    height: 20px;
+    border-top: $lineThickness solid;
+    border-bottom: $lineThickness solid;
+    transition: all 0.15s $transitionEasing;
+  }
+
+  &.is-active &__center {
+    border-color: transparent;
+  }
+}

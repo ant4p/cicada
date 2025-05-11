@@ -1,0 +1,31 @@
+.service {
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-main-2);
+    min-height: 260px;
+    border-radius: 14px;
+    padding: 20px;
+    height: 100%;
+    transition: 0.25s;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-main-2-litle-light);
+      }
+    }
+
+    @media (max-width: 640px) {
+      min-height: initial;
+    }
+  }
+
+
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+
+}

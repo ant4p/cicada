@@ -1,0 +1,27 @@
+.advantages {
+  margin-bottom: var(--margin-bottom-section);
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1280px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__advantage {
+    background-color: var(--color-main-2);
+    border-radius: 14px;
+    padding: 20px;
+
+    &-title {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.address {
+  &__title {
+    margin-bottom: 7px;
+  }
+
+  &__address {
+    margin-bottom: 20px;
+  }
+
+  &__image {
+    border-radius: 14px;
+    object-fit: cover;
+  }
+}

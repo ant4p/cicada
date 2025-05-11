@@ -1,0 +1,62 @@
+.ready-projects {
+  margin-bottom: var(--margin-bottom-section);
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+      grid-column: span 2;
+    }
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+
+  &__catalog {
+    margin-bottom: 58px;
+    align-self: flex-start;
+
+    @media (max-width: 767px) {
+      margin-bottom: initial;
+    }
+  }
+
+  &__product {
+    height: 485px;
+
+    @media (max-width: 1280px) {
+      height: 400px;
+    }
+
+    @media (max-width: 920px) {
+      height: 350px;
+    }
+
+    @media (max-width: 640px) {
+      height: 300px;
+    }
+
+
+    @media (max-width: 480px) {
+      height: 290px;
+    }
+  }
+}

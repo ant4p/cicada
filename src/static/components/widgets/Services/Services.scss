@@ -1,0 +1,41 @@
+.services {
+  &:not(:last-child) {
+    margin-bottom: var(--margin-bottom-section);
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-body {
+      display: flex;
+      column-gap: 20px;
+
+      @media (max-width: 640px) {
+        width: 100%;
+      }
+    }
+
+    &-text {
+      margin-bottom: 20px;
+    }
+
+    &-item {
+      flex-grow: 1;
+    }
+  }
+}

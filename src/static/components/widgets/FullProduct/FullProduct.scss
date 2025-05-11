@@ -1,0 +1,165 @@
+.full-product {
+  &__title {
+    margin-bottom: 30px;
+
+    @media (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 49% 1fr;
+    column-gap: 20px;
+    margin-bottom: 60px;
+
+
+    @media (max-width: 640px) {
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 375px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__slider-container {
+    position: relative;
+  }
+
+  &__navigation {
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      width: 36px;
+      height: 36px;
+      transform: translate(0, -50%);
+      border: 1px solid var(--color-main);
+      border-radius: 4px;
+      z-index: 1;
+
+      &--prev {
+        left: 10px;
+      }
+
+      &--next {
+        right: 10px;
+      }
+
+      &.swiper-button-disabled {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__slider {
+    height: 640px;
+    margin-bottom: 10px;
+
+    @media (max-width: 1280px) {
+      height: 440px;
+    }
+
+    @media (max-width: 920px) {
+      height: 354px;
+    }
+
+    @media (max-width: 375px) {
+      height: 320px;
+    }
+  }
+
+  &__thumbs {
+    height: 98px;
+
+    @media (max-width: 479px) {
+      height: 60px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+
+    &.is-thumb {
+      border-radius: 8px;
+    }
+  }
+
+
+  &__preview {
+    @media (max-width: 640px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__price {
+    margin-bottom: 20px;
+  }
+
+  &__contacts {
+    display: flex;
+    column-gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    &.is-description {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__footer {
+    &-title {
+      margin-bottom: 50px;
+
+      @media (max-width: 1024px) {
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 640px) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-body {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+
+      @media (max-width: 920px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &-product {
+      height: 370px;
+
+      @media (max-width: 1280px) {
+        height: 290px;
+      }
+
+      @media (max-width: 920px) {
+        height: 370px;
+      }
+
+      @media (max-width: 640px) {
+        height: 290px;
+      }
+
+      @media (max-width: 375px) {
+        height: 237px;
+      }
+    }
+  }
+}

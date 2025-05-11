@@ -1,0 +1,51 @@
+body {
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+  background-color: var(--color-main-2-dark);
+
+  &.is-muted {
+    overflow: hidden;
+  }
+}
+
+
+html, body {
+  height: 100%;
+}
+
+html {
+  scroll-padding-top: 40px;
+
+  @media (max-width: 767px) {
+    scroll-padding-top: 100px;
+  }
+}
+
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.main {
+  flex-grow: 1;
+
+  @media (max-width: 767px) {
+    padding-top: 100px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: initial;
+}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="services">
+        <div class="services__inner container">
+          <div class="section-header">
+            <h2 class="section-header__title text text--main-2-light">Услуги</h2>
+            <div class="section-header__subtitle title">Создаём качественные и уникальные проекты на заказ</div>
+          </div>
+
+
+            <div class="services__body">
+        {% for s in services %}
+
+            <article class="sevices__service service">
+              <a class="service__link" href="{{ s.get_absolute_url }}">
+                <h3 class="service__title text text--big">{{ s.title }}</h3>
+                <p class="service__description text text--regular">{{ s.content }}</p>
+              </a>
+            </article>
+
+        {% endfor %}
+
+            </div>
+        </div>
+      </section>
+
+
+
+{% endblock content %}

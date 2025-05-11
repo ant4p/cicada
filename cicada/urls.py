@@ -22,6 +22,8 @@ from cicada import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('src.urls', namespace='src')),
+    path('services/', include('services.urls', namespace='services')),
 ]
 
 if settings.DEBUG:

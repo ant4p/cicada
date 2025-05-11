@@ -1,0 +1,21 @@
+:root {
+    --color-main: #FFFFFF;
+    --color-main-2: #363535;
+    --color-main-2-dark: #181818;
+    --color-main-2-light: #A7A7A7;
+    --color-main-2-litle-light: #555555;
+
+    --margin-bottom-section: 100px;
+
+    @media (max-width: 1280px) {
+        --margin-bottom-section: 60px;
+    }
+
+    @media (max-width: 640px) {
+        --margin-bottom-section: 50px;
+    }
+
+    @media (max-width: 480px) {
+        --margin-bottom-section: 40px;
+    }
+}

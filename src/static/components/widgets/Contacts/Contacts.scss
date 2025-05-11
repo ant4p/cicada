@@ -1,0 +1,82 @@
+.contacts {
+  margin-bottom: 30px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin-bottom: 30px;
+
+    @media (max-width: 920px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 920px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__contact {
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-main-2);
+    border-radius: 14px;
+    transition: 0.25s;
+
+    @media (hover:hover) {
+      &:hover {
+        background-color: var(--color-main-2-litle-light);
+      }
+    }
+
+    &.is-mail {
+      @media (hover:hover) {
+        &:hover {
+          background-color: #FFC121;
+        }
+      }
+    }
+
+    &.is-phone {
+      @media (hover:hover) {
+        &:hover {
+          background-color: #871BA9;
+        }
+      }
+    }
+
+
+    &.is-telegram {
+      @media (hover:hover) {
+        &:hover {
+          background-color: #27A6E5;
+        }
+      }
+    }
+
+    &.is-whatsapp {
+      @media (hover:hover) {
+        &:hover {
+          background-color: #48C95F;
+        }
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      height: 150px;
+    }
+  }
+}
