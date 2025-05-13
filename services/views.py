@@ -20,9 +20,9 @@ class ServiceItemView(ListView):
     def get_queryset(self):
         return ServiceItem.objects.filter(service__slug=self.kwargs['slug'])
 
-    @staticmethod
-    def get_services():
-        return Service.objects.all()
+    # @staticmethod
+    # def get_services():
+    #     return Service.objects.all()
 
 
 

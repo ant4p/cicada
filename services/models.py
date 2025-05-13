@@ -14,7 +14,7 @@ class Service(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('services_item', kwargs={'slug': self.slug})
+        return reverse('services:services_item', kwargs={'slug': self.slug})
 
 class ServiceItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Title')

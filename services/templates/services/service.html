@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
+{% load service_tags %}
 
 {% block content %}
 
     <main class="main">
+
       <section class="service-products">
+
         <div class="service-products__inner container">
 
           {% for s in item %}
@@ -12,7 +15,9 @@
           <div class="service-products__body">
             <article class="service-product">
               <div class="service-product__container">
+                {% if s.title_image %}
                 <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
+                {% endif %}
               </div>
               <div class="service-product__body">
                 <h3 class="service-product__title text text--big">{{ s.title }}</h3>
@@ -21,7 +26,7 @@
                   <p>{{ s.content }}</p>
                 </div>
 
-
+{% include 'services/services_contacts_item.html' %}
 
               </div>
             </article>
@@ -31,7 +36,9 @@
         </div>
       </section>
 
-{% include 'services/services_list.html' %}
+
+
+      {% include 'services/services_list.html' %}
 
     </main>
 
