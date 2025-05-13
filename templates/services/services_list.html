@@ -1,5 +1,3 @@
-{% extends 'base.html' %}
-
 {% block content %}
 
 <section class="services">
@@ -11,16 +9,20 @@
 
 
             <div class="services__body">
-        {% for s in services %}
+        {% for s in services_list %}
+
 
             <article class="sevices__service service">
-              <a class="service__link" href="{{ s.get_absolute_url }}">
+              <a class="service__link" href="{{ s.slug }}">
                 <h3 class="service__title text text--big">{{ s.title }}</h3>
+
                 <p class="service__description text text--regular">{{ s.content }}</p>
               </a>
             </article>
 
-        {% endfor %}
+                {% endfor %}
+
+
 
             </div>
         </div>

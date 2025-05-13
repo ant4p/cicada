@@ -6,29 +6,33 @@
       <section class="service-products">
         <div class="service-products__inner container">
 
-{% for s in services %}
-          <h1 class="service-products__title title">{{ s.title }}</h1>
+          {% for s in item %}
+
+          <h1 class="service-products__title title">{{ s.service }}</h1>
           <div class="service-products__body">
             <article class="service-product">
               <div class="service-product__container">
-                <img srcset="/static/assets/images/3d_printer-320x291.jpg 320w, /static/assets/images/3d_printer-400x364.jpg 400w, /static/assets/images/3d_printer-440x400.jpg 440w" src="/static/assets/images/3d_printer-440x400.jpg" sizes="(min-width: 440px) 440px, 100vw" width="440" height="400" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
+                <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
               </div>
               <div class="service-product__body">
                 <h3 class="service-product__title text text--big">{{ s.title }}</h3>
-                <div class="service-product__price text text--big">{{ s.price }}</div>
+                <div class="service-product__price text text--big">Цена, от {{ s.price }}</div>
                 <div class="service-product__description text text--regular">
                   <p>{{ s.content }}</p>
                 </div>
-                  {% endfor %}
+
 
 
               </div>
             </article>
+
+            {% endfor %}
           </div>
         </div>
       </section>
 
 {% include 'services/services_list.html' %}
+
     </main>
 
 {% endblock content %}

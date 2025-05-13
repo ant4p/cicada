@@ -2,25 +2,31 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView
 
-from services.models import Service
+from services.models import Service, ServiceItem
 
 
-# class ShowServicesList(TemplateView):
-#     template_name = 'services/services_list.html'
-
-class ShowServicesList(ListView):
-    template_name = 'services/services_list.html'
-    context_object_name = 'services'
+class ServicesListView(ListView):
+    template_name = 'services/services_main.html'
+    context_object_name = 'services_list'
 
     def get_queryset(self):
         return Service.objects.all()
 
-class ShowService(DetailView):
-    model = Service
-    template_name = 'services/service.html'
-    context_object_name = 'services'
 
-    def get_success_url(self):
-        return reverse('services', kwargs={'slug': self.object.slug})
+class ServiceItemView(ListView):
+    template_name = 'services/service.html'
+    context_object_name = 'item'
+
+    def get_queryset(self):
+        return ServiceItem.objects.filter(service__slug=self.kwargs['slug'])
+
+    @staticmethod
+    def get_services():
+        return Service.objects.all()
+
+
+
+
+
 
 

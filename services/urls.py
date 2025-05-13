@@ -1,11 +1,11 @@
 from django.urls import path
 
-from services.views import ShowServicesList, ShowService
+from services.views import ServicesListView, ServiceItemView
 
 app_name = 'services'
 
 urlpatterns = [
-    path('', ShowServicesList.as_view(), name='services_list'),
-    path('<slug:slug>/', ShowService.as_view(), name='services'),
+    path('', ServicesListView.as_view(), name='services_list'),
+    path('<slug:slug>/', ServiceItemView.as_view(), name='services_item'),
 
 ]
