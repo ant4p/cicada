@@ -21,7 +21,7 @@
                            {% for i in products_list %}
                            {% if i.category_id == c.id %}
                            <article class="catalog__product product">
-                               <a href="" class="product__link"></a>
+                               <a href="{{ i.slug }}" class="product__link"></a>
                                <div class="product__preview">
                                    {% if i.title_image %}
                                    <img src="{{ i.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">

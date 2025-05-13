@@ -1,7 +1,8 @@
 
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.urls import reverse
 
 from products.models import Product
 
@@ -18,5 +19,6 @@ class ProductView(DetailView):
     template_name = 'products/product.html'
     context_object_name = 'item'
 
-    def get_queryset(self):
-        return Product.objects.filter(product__slug=self.kwargs['slug'])
+
+    def get_success_url(self):
+        return reverse('product', kwargs={'slug': self.object.slug})

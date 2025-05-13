@@ -6,24 +6,57 @@
 <main class="main">
       <section class="full-product">
         <div class="full-product__inner container">
-            {% for i in item %}
-          <h1 class="full-product__title title">{{ i.title }}</h1>
+
+          <h1 class="full-product__title title">{{ item.title }}</h1>
           <div class="full-product__body">
 
-
+<div class="full-product__preview">
+              <div class="full-product__slider-container"><swiper-container class="full-product__slider" init="false"><swiper-slide>
+                    <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
+                  </swiper-slide><swiper-slide>
+                    <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
+                  </swiper-slide><swiper-slide>
+                    <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
+                  </swiper-slide><swiper-slide>
+                    <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
+                  </swiper-slide><swiper-slide>
+                    <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
+                  </swiper-slide></swiper-container>
+                <button class="full-product__navigation-button full-product__navigation-button--prev">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 13L1 7L7 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+                <button class="full-product__navigation-button full-product__navigation-button--next">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L7 7L1 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+              </div><swiper-container class="full-product__thumbs" init="false"><swiper-slide>
+                  <img src="{{ item.title_image.url }}"  alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
+                </swiper-slide><swiper-slide>
+                  <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
+                </swiper-slide><swiper-slide>
+                  <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
+                </swiper-slide><swiper-slide>
+                  <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
+                </swiper-slide><swiper-slide>
+                  <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
+                </swiper-slide></swiper-container>
+            </div>
 
             <div class="full-product__content">
-              <div class="full-product__price text text--very-big">{{ i.price }}</div>
+              <div class="full-product__price text text--very-big">{{ item.price }}</div>
 
 
 
               <div class="full-product__block is-description">
                 <div class="full-product__block-label text text--main-2-light">Описание:</div>
                 <div class="full-product__block full-product__description text">
-                  <p>{{ i.content }}</p>
+                  <p>{{ item.content }}</p>
                 </div>
               </div>
-                {% endfor %}
+
 
               <div class="full-product__block">
                 <div class="full-product__block-label text text--main-2-light">Оплата и доставка</div>
