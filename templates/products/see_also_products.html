@@ -1,0 +1,26 @@
+{% load product_tags %}
+
+<div class="full-product__footer">
+    <h2 class="full-product__footer-title title">Смотрите также</h2>
+    <div class="full-product__footer-body">
+        {% get_random_product_4 as products %}
+        {% for p in products %}
+        <article class="full-product__footer-product product">
+            <a href="{{ p.get_absolute_url }}" class="product__link"></a>
+            <div class="product__preview">
+
+                {% include  'products/product_contacts_list.html' %}
+
+                {% if p.title_image %}
+                <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+                {% endif %}
+            </div>
+            <div class="product__footer">
+                <h3 class="product__title text text--regular">{{ p.title }}</h3>
+                <div class="product__price text text--regular">{{ p.price }} ₽</div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+{% load product_tags %}
+
+<section class="print">
+  <div class="print__inner container">
+    <div class="section-header">
+      <h2 class="section-header__title text text--main-2-light">Наши работы</h2>
+      <div class="section-header__subtitle title">3D Печать</div>
+    </div>
+    <swiper-container class="print__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
+      {% get_random_product_7 as products %}
+      {% for p in products %}
+      <swiper-slide>
+        <a href="{{ p.get_absolute_url }}" class="print__link">
+          {% if p.title_image %}
+          <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
+          {% endif %}
+        </a>
+      </swiper-slide>
+      {% endfor %}
+    </swiper-container>
+    <ul class="print__list">
+      {% get_random_product_7 as products %}
+      {% for p in products %}
+      <li class="print__item">
+        <a href="{{ p.get_absolute_url }}" class="print__link">
+          {% if p.title_image %}
+          <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
+          {% endif %}
+        </a>
+      </li>
+      {% endfor %}
+      <li class="print__item">
+        <div class="print__description text">
+          <p>Наши работы — это демонстрация возможностей современных 3D-технологий и нашей экспертизы. Просматривая проекты, вы можете вдохновиться, понять, как лучше реализовать вашу идею, выбрать подходящую технологию или материал</p>
+          <p>Это помогает нам вместе найти оптимальное решение и достичь наилучшего результата для вашего проекта</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

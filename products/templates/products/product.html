@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load product_tags %}
 
 {% block content %}
 
@@ -104,8 +105,14 @@
                     </div>
                 </div>
             </div>
+
+            {% include 'products/see_also_products.html' %}
+
         </div>
     </section>
+
+
+
 </main>
 
 {% endblock content %}

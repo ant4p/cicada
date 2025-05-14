@@ -1,0 +1,34 @@
+{% load product_tags %}
+
+<section class="ready-projects">
+    <div class="ready-projects__inner container">
+        <div class="section-header">
+            <h2 class="section-header__title text text--main-2-light">Готовые проекты</h2>
+            <div class="section-header__subtitle title">Каталог</div>
+        </div>
+        <div class="ready-projects__body">
+            {% get_random_product_2 as products %}
+            {% for p in products %}
+            <article class="ready-projects__product product">
+                <a href="{{ p.get_absolute_url }}" class="product__link"></a>
+                <div class="product__preview">
+
+                    {% include  'products/product_contacts_list.html' %}
+
+                    {% if p.title_image %}
+                    <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+                    {% endif %}
+                </div>
+                <div class="product__footer">
+                    <h3 class="product__title text text--regular">{{ p.title }}</h3>
+                    <div class="product__price text text--regular">{{ p.price }} ₽</div>
+                </div>
+            </article>
+            {% endfor %}
+            <div class="ready-projects__description">
+                <div class="ready-projects__text text">Каждое из них напечатано из безопасных и прочных материалов, чтобы радовать вас или стать идеальным подарком для любимого человека</div>
+                <a class="ready-projects__catalog is-big link" href="{% url 'products:products_list' %}">В каталог</a>
+            </div>
+        </div>
+    </div>
+</section>

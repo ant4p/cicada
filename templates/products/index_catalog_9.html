@@ -1,0 +1,34 @@
+{% load product_tags %}
+
+<section class="projects">
+        <div class="projects__inner container">
+          <div class="section-header">
+            <h2 class="section-header__title text text--main-2-light">Наши работы</h2>
+            <div class="section-header__subtitle title">3D Печать</div>
+          </div>
+                      {% get_random_product_9 as products %}
+            {% for p in products %}
+          <swiper-container class="projects__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
+            <swiper-slide>
+            <a href="{{ p.get_absolute_url }}" class="projects__link">
+               {% if p.title_image %}
+                    <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="projects__image">
+                    {% endif %}
+            </a>
+        </swiper-slide>
+          </swiper-container>
+          {% endfor %}
+
+          <ul class="projects__list">
+            <li class="projects__item">
+                <a href="{{ p.get_absolute_url }}" class="projects__link">
+                  {% if p.title_image %}
+                    <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="projects__image">
+                    {% endif %}
+                </a>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
