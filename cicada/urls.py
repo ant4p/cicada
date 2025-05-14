@@ -30,3 +30,7 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls')),]
+
+
+admin.site.site_header = 'Панель управления'
+admin.site.index_title = 'CICADA 3D'

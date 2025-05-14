@@ -9,6 +9,9 @@ class Service(models.Model):
 
     class Meta:
         db_table = 'service'
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+
 
     def __str__(self):
         return self.title
@@ -26,6 +29,8 @@ class ServiceItem(models.Model):
 
     class Meta:
         db_table = 'service_item'
+        verbose_name = 'Разновидность услуги'
+        verbose_name_plural = 'Разновидность услуги'
 
     def __str__(self):
         return self.title

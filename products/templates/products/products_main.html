@@ -24,6 +24,7 @@
                                <a href="{{ i.slug }}" class="product__link"></a>
                                <div class="product__preview">
                                    {% if i.title_image %}
+                                   {% include 'products/product_contacts_list.html' %}
                                    <img src="{{ i.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
                                    {% endif %}
                                </div>

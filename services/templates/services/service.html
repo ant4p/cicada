@@ -3,43 +3,35 @@
 
 {% block content %}
 
-    <main class="main">
-
-      <section class="service-products">
-
+<main class="main">
+    <section class="service-products">
         <div class="service-products__inner container">
+            {% for s in item %}
+            <h4 class="service-product__title text text--big">{{ s.service }}</h4>
+            <div class="service-products__body">
+                <article class="service-product">
+                    <div class="service-product__container">
+                        {% if s.title_image %}
+                        <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
+                        {% endif %}
+                    </div>
+                    <div class="service-product__body">
+                        <h3 class="service-product__title text text--big">{{ s.title }}</h3>
+                        <div class="service-product__price text text--big">Цена, от {{s.price}} Р/См</div>
+                        <div class="service-product__description text text--regular">
+                            <p>{{ s.content }}</p>
+                        </div>
 
-          {% for s in item %}
-
-          <h1 class="service-products__title title">{{ s.service }}</h1>
-          <div class="service-products__body">
-            <article class="service-product">
-              <div class="service-product__container">
-                {% if s.title_image %}
-                <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
-                {% endif %}
-              </div>
-              <div class="service-product__body">
-                <h3 class="service-product__title text text--big">{{ s.title }}</h3>
-                <div class="service-product__price text text--big">Цена, от {{ s.price }}</div>
-                <div class="service-product__description text text--regular">
-                  <p>{{ s.content }}</p>
-                </div>
-
-{% include 'services/services_contacts_item.html' %}
-
-              </div>
-            </article>
-
-            {% endfor %}
-          </div>
+                        {% include 'services/services_contacts_item.html' %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
         </div>
-      </section>
+    </section>
 
+    {% include 'services/services_list.html' %}
 
-
-      {% include 'services/services_list.html' %}
-
-    </main>
+</main>
 
 {% endblock content %}

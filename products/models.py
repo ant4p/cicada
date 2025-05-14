@@ -7,6 +7,8 @@ class ProductCategory(models.Model):
 
     class Meta:
         db_table = 'product_category'
+        verbose_name = 'Категории продуктов'
+        verbose_name_plural = 'Категории продуктов'
 
     def __str__(self):
         return self.title
@@ -19,15 +21,16 @@ class Product(models.Model):
     price = models.PositiveSmallIntegerField(verbose_name='Цена')
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='Category', verbose_name='Категория')
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение')
-    image1 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='image1')
-    image2 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='image2')
-    image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='image3')
-    image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='image4')
-    image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='image5')
+    image1 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_1')
+    image2 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_2')
+    image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_3')
+    image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_4')
+    image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_5')
 
     class Meta:
         db_table = 'product'
         verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
 
 
     def __str__(self):
