@@ -6,6 +6,7 @@
 <main class="main">
     <section class="service-products">
         <div class="service-products__inner container">
+
             {% for s in item %}
             <h4 class="service-product__title text text--big">{{ s.service }}</h4>
             <div class="service-products__body">
@@ -17,7 +18,9 @@
                     </div>
                     <div class="service-product__body">
                         <h3 class="service-product__title text text--big">{{ s.title }}</h3>
+                        {% if s.price %}
                         <div class="service-product__price text text--big">Цена, от {{s.price}} Р/См</div>
+                        {% endif %}
                         <div class="service-product__description text text--regular">
                             <p>{{ s.content }}</p>
                         </div>

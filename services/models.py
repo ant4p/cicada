@@ -24,16 +24,21 @@ class ServiceItem(models.Model):
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     content = models.TextField(blank=True, verbose_name='Content')
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Title_image')
-    price = models.PositiveSmallIntegerField(verbose_name='Price')
+    price = models.PositiveSmallIntegerField(verbose_name='Price', blank=True, null=True)
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='Service', verbose_name='Service')
 
     class Meta:
         db_table = 'service_item'
-        verbose_name = 'Разновидность услуги'
-        verbose_name_plural = 'Разновидность услуги'
+        verbose_name = 'Наполнение услуги'
+        verbose_name_plural = 'Наполнение услуги'
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('services:services_item', kwargs={'slug': self.slug})
+
+
 
 
 

@@ -17,10 +17,10 @@
               <a class="link" href="{% url 'products:products_list' %}" >Каталог</a>
             </li>
             <li class="header__menu-item">
-              <a class="link" href="/" >Контакты</a>
+              <a class="link" href="{% url 'src:contacts' %}" >Контакты</a>
             </li>
             <li class="header__menu-item">
-              <a class="link" href="/" >Сотрудничество</a>
+              <a class="link" href="{% url 'src:cooperation' %}">Сотрудничество</a>
             </li>
             <li class="header__menu-item visible-mobile">
               <button class="header__burger-button burger-button" data-burger-button="true">
