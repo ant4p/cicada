@@ -1,0 +1,23 @@
+
+
+from django.shortcuts import render
+from django.urls import reverse
+from django.views.generic import ListView, DetailView
+
+from articles.models import Article
+
+
+class ArticlesListView(ListView):
+    template_name = 'articles/articles_main.html'
+    context_object_name = 'articles_list'
+
+    def get_queryset(self):
+        return Article.objects.all()
+
+class ArticleView(DetailView):
+    model = Article
+    template_name = 'articles/article.html'
+    context_object_name = 'item'
+
+    def get_success_url(self):
+        return reverse('article', kwargs={'slug':self.object.slug})

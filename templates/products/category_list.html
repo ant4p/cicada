@@ -1,8 +1,6 @@
 {% block content %}
 {% load product_tags %}
 
-
-
 <ul class="catalog__filters">
     {% get_categories as category %}
     {% for c in category %}
@@ -11,6 +9,5 @@
     </li>
     {% endfor %}
 </ul>
-
 
 {% endblock content %}

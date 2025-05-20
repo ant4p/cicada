@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="main">
+      <section class="full-article">
+        <div class="full-article container">
+          <h1 class="full-article__title title">{{ item.title }}</h1>
+          <div class="full-article__body">
+            {% if item.title_image %}
+              <img src="{{ item.title_image.url }}" alt="Статья" decoding="async" loading="lazy" class="full-article__image">
+            {% endif %}
+            <div class="full-article__content">
+              <div class="full-article__description text text--regular">
+                {{ item.content }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+{% endblock content %}

@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from src.models import UserAgreement
+
+
+class UserAgreementAdmin(admin.ModelAdmin):
+    fields = ['content']
+
+admin.site.register(UserAgreement, UserAgreementAdmin)

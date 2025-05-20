@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'src',
     'services',
     'products',
+    'articles',
 ]
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar',]

@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
+
+from src.models import UserAgreement
 
 
 class ShowMainPage(TemplateView):
@@ -10,3 +12,11 @@ class ShowCooperationPage(TemplateView):
 
 class ShowContactsPage(TemplateView):
     template_name = 'src/contacts.html'
+
+class ShowUserAgreement(DetailView):
+    model = UserAgreement
+    template_name = 'src/user_agreement.html'
+    context_object_name = 'item'
+
+    def get_object(self, queryset=None):
+        return UserAgreement.objects.get()
