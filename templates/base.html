@@ -13,11 +13,11 @@
   <link rel="shortcut icon" href="{% static '/assets/images/favicon.ico' %}">
 
 </head>
-
 <body>
-<main>
 
   {% include 'header.html' %}
+
+  <main>
 
   {% block content %}
 
@@ -25,9 +25,11 @@
 
   {% include 'contacts.html' %}
 
+  </main>
+
   {% include 'footer.html' %}
 
-</main>
+
 </body>
 
 </html>

@@ -2,14 +2,16 @@
 
 {% block content %}
 
-<section class="contacts">
-    <div class="contacts__inner container">
-        <div class="section-header">
-            <div class="section-header__subtitle title">Пользовательское соглашение</div>
+<main class="main">
+    <section class="contacts">
+        <div class="contacts__inner container">
+            <div class="section-header">
+                <div class="section-header__subtitle title">Пользовательское соглашение</div>
+            </div>
+            <div class="contacts__text text">{{ item.content|linebreaksbr }}</div>
         </div>
-        <div class="contacts__text text">{{ item.content|linebreaksbr }}</div>
-    </div>
-</section>
+    </section>
+</main>
 
 
 {% endblock content %}

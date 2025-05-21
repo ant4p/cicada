@@ -18,14 +18,15 @@ class ServiceItemAdmin(admin.ModelAdmin):
         'post_title_image',
         'content',
         'price',
+        'show_contacts',
     ]
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
         'post_title_image'
     ]
-    list_display = ('id', 'title', 'service', 'post_title_image', 'price')
-    list_display_links = ('id', 'title')
-    list_editable = ('service',)
+    list_display = ('id', 'title', 'service','show_contacts', 'post_title_image', 'price', )
+    list_display_links = ('id', 'title', )
+    list_editable = ('service', 'show_contacts', 'price', )
     search_fields = [
         'title',
         'service__title'

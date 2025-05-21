@@ -2,43 +2,58 @@
 {% load product_tags %}
 
 {% block content %}
-   <main class="main">
-       <section class="catalog">
-           <div class="catalog__inner container">
-               <div class="catalog__header">
-                   <h1 class="catalog__title title">КАТАЛОГ</h1>
-                   <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
-               </div>
 
-               {% include 'products/category_list.html' %}
+<main class="main">
+    <section class="catalog">
+        <div class="catalog__inner container">
+            <div class="catalog__header">
+                <h1 class="catalog__title title">КАТАЛОГ</h1>
+                <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
+            </div>
 
-               {% get_categories as category %}
-               {% for c in category %}
-               <div class="catalog__body">
-                   <div class="catalog__products" id="{{ c.title }}">
-                       <h2 class="catalog__label title title--small">{{ c.title }}</h2>
-                       <div class="catalog__products-body">
-                           {% for i in products_list %}
-                           {% if i.category_id == c.id %}
-                           <article class="catalog__product product">
-                               <a href="{{ i.slug }}" class="product__link"></a>
-                               <div class="product__preview">
-                                   {% if i.title_image %}
-                                   {% include 'products/product_contacts_list.html' %}
-                                   <img src="{{ i.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
-                                   {% endif %}
-                               </div>
-                               <div class="product__footer">
-                                   <h3 class="product__title text text--regular">{{ i.title }}</h3>
-                                   <div class="product__price text text--regular">{{ i.price }}₽</div>
-                               </div>
-                           </article>
-                           {% endif %}
-                           {% endfor %}
-                       </div>
-                       <br>
-               {% endfor %}
-       </section>
-   </main>
+            {% include 'products/category_list.html' %}
+
+            {% get_categories as category %}
+            {% for c in category %}
+
+            <div class="catalog__body">
+                <div class="catalog__products" id="{{ c.title }}">
+                    <h2 class="catalog__label title title--small">{{ c.title }}</h2>
+                    <div class="catalog__products-body">
+
+                        {% for i in products_list %}
+                        {% if i.category_id == c.id %}
+
+                        <article class="catalog__product product">
+                            <a href="{{ i.slug }}" class="product__link"></a>
+                            <div class="product__preview">
+
+                                {% if i.title_image %}
+                                {% include 'products/product_contacts_list.html' %}
+
+                                <img src="{{ i.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+
+                                {% endif %}
+
+                            </div>
+                            <div class="product__footer">
+                                <h3 class="product__title text text--regular">{{ i.title }}</h3>
+                                <div class="product__price text text--regular">{{ i.price }}₽</div>
+                            </div>
+                        </article>
+
+                        {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </section>
+</main>
 
 {% endblock content %}

@@ -25,6 +25,7 @@ class ServiceItem(models.Model):
     content = models.TextField(blank=True, verbose_name='Content')
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Title_image')
     price = models.PositiveSmallIntegerField(verbose_name='Price', blank=True, null=True)
+    show_contacts = models.BooleanField(verbose_name="Show_contacts", default=True)
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='Service', verbose_name='Service')
 
     class Meta:

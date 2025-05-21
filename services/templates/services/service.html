@@ -8,27 +8,45 @@
         <div class="service-products__inner container">
 
             {% for s in item %}
+
             <h4 class="service-product__title text text--big">{{ s.service }}</h4>
             <div class="service-products__body">
                 <article class="service-product">
                     <div class="service-product__container">
+
                         {% if s.title_image %}
+
                         <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="service-product__image">
+
                         {% endif %}
+
                     </div>
                     <div class="service-product__body">
                         <h3 class="service-product__title text text--big">{{ s.title }}</h3>
+
                         {% if s.price %}
-                        <div class="service-product__price text text--big">Цена, от {{s.price}} Р/См</div>
+
+                        <div class="service-product__price text text--big">от {{s.price}} ₽/см³</div>
+
                         {% endif %}
+
                         <div class="service-product__description text text--regular">
-                            <p>{{ s.content }}</p>
+
+                            <p>{{ s.content|linebreaksbr }}</p>
+
                         </div>
 
+                        {% if s.show_contacts %}
+
                         {% include 'services/services_contacts_item.html' %}
+
+                        {% endif %}
+
                     </div>
                 </article>
+
                 {% endfor %}
+
             </div>
         </div>
     </section>

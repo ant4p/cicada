@@ -1,19 +1,21 @@
 {% load static %}
 
-    <main class="main">
-      <section class="preview">
-        <div class="preview__inner container">
-          <h1 class="preview__title title title--big">От идеи до 3D печати — с нами это лекго реализовать</h1>
-          <div class="preview__subtext text">Изготавливаем 3D-фигуры, игрушки, сувениры, детали или что‑то уникальное — мы готовы к любым задачам!</div>
-          <video preload="auto" loop="loop" width="350" height="300" autoplay muted>
-                <source src="{% static 'assets/title_video.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-          <div class="preview__description text">
+<section class="preview">
+    <div class="preview__inner container">
+        <h1 class="preview__title title title--big">От идеи до 3D печати — с нами это лекго реализовать</h1>
+
+        <div class="preview__subtext text">
+            Изготавливаем 3D-фигуры, игрушки, сувениры, детали или что‑то уникальное — мы готовы к любым задачам!
+        </div>
+        <div class="preview__description text">
             <p class="preview__description-text">Создаём уникальные изделия, которые радуют и вдохновляют. Используем современные технологии SLA и FDM, а также материалы премиум-класса для достижения высокого качества и долговечности каждого проекта</p>
 
             {% include 'index/preview_contacts.html' %}
-
-          </div>
         </div>
-      </section>
+        <video preload="auto" loop="loop" width="400" height="350" autoplay muted>
+            <source src="{% static 'assets/title_video.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    </div>
+</section>
