@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from products.models import ProductCategory, Product
+from tags.models import Tag
+
 
 class ProductAdmin(admin.ModelAdmin):
     fields = [
@@ -9,8 +11,10 @@ class ProductAdmin(admin.ModelAdmin):
         'slug',
         'content',
         'price',
+        'in_catalog',
         'category',
         'title_image',
+        'tags',
         'post_title_image',
         'image1',
         'post_image1',
@@ -32,9 +36,9 @@ class ProductAdmin(admin.ModelAdmin):
         'post_image4',
         'post_image5'
     ]
-    list_display = ('id', 'title', 'price', 'post_title_image', 'category')
-    list_display_links = ('id', 'title')
-    list_editable = ('price',)
+    list_display = ('id', 'title', 'price','in_catalog','tags__title', 'post_title_image', 'category')
+    list_display_links = ('id', 'title', )
+    list_editable = ('price', 'in_catalog', )
     list_per_page = 10
     search_fields = ['title', 'category__title']
     list_filter = ['category__title']
@@ -75,6 +79,11 @@ class ProductAdmin(admin.ModelAdmin):
         if Product.image5:
             return mark_safe(f"<img src='{Product.image1.url}' width=75>")
         return 'Нет фото'
+
+    # @admin.display(description='Tэги')
+    # def get_tags(self, Product):
+    #     if Product.tags:
+    #         return Tag.objects.filter()
 
 
 

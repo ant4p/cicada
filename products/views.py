@@ -19,3 +19,4 @@ class ProductView(DetailView):
 
     def get_success_url(self):
         return reverse('product', kwargs={'slug': self.object.slug})
+

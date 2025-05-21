@@ -20,3 +20,10 @@ class ShowUserAgreement(DetailView):
 
     def get_object(self, queryset=None):
         return UserAgreement.objects.get()
+
+
+def handler_404(request, exception):
+    return render(request, template_name='src/handlers/error_404.html')
+
+def handler_500(request):
+    return render(request, template_name='src/handlers/error_500.html')

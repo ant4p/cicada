@@ -9,18 +9,10 @@ register = template.Library()
 def get_categories():
     return ProductCategory.objects.all()
 
-@register.simple_tag()
-def get_random_product_9():
-    products = Product.objects.all()
-    try:
-        random_products = random.choices(products, k=9)
-        return random_products
-    except IndexError:
-        pass
 
 @register.simple_tag()
 def get_random_product_7():
-    products = Product.objects.all()
+    products = Product.objects.filter(in_catalog=True)
     try:
         random_products = random.choices(products, k=7)
         return random_products
@@ -29,7 +21,7 @@ def get_random_product_7():
 
 @register.simple_tag()
 def get_random_product_4():
-    products = Product.objects.all()
+    products = Product.objects.filter(in_catalog=True)
     try:
         random_products = random.choices(products, k=4)
         return random_products
@@ -38,12 +30,16 @@ def get_random_product_4():
 
 @register.simple_tag()
 def get_random_product_2():
-    products = Product.objects.all()
+    products = Product.objects.filter(in_catalog=True)
     try:
         random_products = random.choices(products, k=2)
         return random_products
     except IndexError:
         pass
+
+@register.simple_tag()
+def get_products():
+    return Product.objects.filter(in_catalog=True)
 
 
 

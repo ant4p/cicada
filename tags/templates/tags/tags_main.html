@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load tag_tags %}
+
+{% block content %}
+
+<main class="main">
+    <section class="catalog">
+        <div class="catalog__inner container">
+            <div class="catalog__header">
+                <h1 class="catalog__title title">Тэги</h1>
+                <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
+            </div>
+
+            {% include 'tags/tags_list.html' %}
+
+
+            </div>
+
+
+
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load tag_tags %}
 {% load product_tags %}
 
 {% block content %}
@@ -7,26 +8,18 @@
     <section class="catalog">
         <div class="catalog__inner container">
             <div class="catalog__header">
-                <h1 class="catalog__title title">КАТАЛОГ</h1>
+                <h1 class="catalog__title title">Тэги</h1>
                 <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
             </div>
+            {% include 'tags/tags_list.html' %}
 
-            {% include 'products/category_list.html' %}
 
-            {% get_categories as category %}
-            {% for c in category %}
+<div class="catalog__products-body">
 
-            <div class="catalog__body">
-                <div class="catalog__products" id="{{ c.title }}">
-                    <h2 class="catalog__label title title--small">{{ c.title }}</h2>
-                    <div class="catalog__products-body">
+            {% for i in item %}
 
-                        {% for i in products_list %}
-                        {% if i.category_id == c.id %}
-                        {% if i.in_catalog %}
-
-                        <article class="catalog__product product">
-                            <a href="{{ i.slug }}" class="product__link"></a>
+            <article class="catalog__product product">
+                            <a href="{{ i.get_absolute_url }}" class="product__link"></a>
                             <div class="product__preview">
 
                                 {% if i.title_image %}
@@ -40,21 +33,12 @@
                             <div class="product__footer">
                                 <h3 class="product__title text text--regular">{{ i.title }}</h3>
                                 <div class="product__price text text--regular">{{ i.price }}₽</div>
+
                             </div>
                         </article>
-
-                        {% endif %}
-                        {% endif %}
-                        {% endfor %}
-
-                    </div>
-                    <br>
-                </div>
-            </div>
-
-            {% endfor %}
-
+{% endfor %}
         </div>
+
     </section>
 </main>
 

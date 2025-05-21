@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load product_tags %}
+{% load tag_tags %}
 
 {% block content %}
 
 <main class="main">
     <section class="full-product">
         <div class="full-product__inner container">
+            {% if item.in_catalog %}
             <h1 class="full-product__title title">{{ item.title }}</h1>
             <div class="full-product__body">
                 <div class="full-product__preview">
@@ -102,17 +104,32 @@
                         <div class="full-product__block-text text">
                             <p>Мы работаем с надёжной службой доставки CDEK, чтобы ваш заказ прибыл быстро и в целости. Либо вы можете забрать товар из нашей мастерской. Оплата осуществляется удобным переводом на карту после согласования всех деталей. Оформляйте заказ, и мы позаботимся о всём остальном!</p>
                         </div>
+
+                        {% if item.tags %}
+
+                        <div class="full-product__block-label text text--main-2-light">Тэги</div>
+                        <ul class="catalog__filters">
+
+                            {% for t in item.tags.all %}
+                            {% if t.tags %}
+
+                            <li class="catalog__filter">
+                                <a class="catalog__link link" href="{{ t.get_absolute_url }}" >#{{ t.title }}</a>
+                            </li>
+
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
 
             {% include 'products/see_also_products.html' %}
 
+            {% endif %}
         </div>
     </section>
-
-
-
 </main>
 
 {% endblock content %}

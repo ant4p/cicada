@@ -5,6 +5,7 @@
           <h1 class="articles__title title">Статьи</h1>
           <div class="articles__body">
              {% for a in articles_list %}
+              {% if a.is_published %}
             <article class="article">
               <a class="article__link" href="{{ a.get_absolute_url }}">
                 <h3 class="article__title text text--big">{{ a.title }}</h3>
@@ -14,6 +15,7 @@
                   <div class="article__description text text--regular">{{ a.content }}</div>
               </a>
             </article>
+              {% endif %}
             {% endfor %}
 
 

@@ -5,6 +5,7 @@
 <main class="main">
   <section class="full-article">
     <div class="full-article container">
+      {% if item.is_published %}
       <h1 class="full-article__title title">{{ item.title }}</h1>
       <div class="full-article__body">
 
@@ -21,6 +22,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
   </section>
 </main>
 

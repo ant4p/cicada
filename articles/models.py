@@ -6,6 +6,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True,db_index=True, verbose_name='Slug')
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение')
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
     content = models.TextField(blank=True, verbose_name='Текст статьи')
 
     class Meta:

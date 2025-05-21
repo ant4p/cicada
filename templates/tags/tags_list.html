@@ -1,0 +1,14 @@
+{% block content %}
+{% load tag_tags %}
+
+<ul class="catalog__filters">
+    {% get_tags as tag %}
+    {% for t in tag %}
+    <li class="catalog__filter">
+        <a class="catalog__link link" href="{{ t.get_absolute_url }}" >#{{ t.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
