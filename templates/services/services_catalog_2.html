@@ -17,7 +17,7 @@
       {% get_random_services_2_9 as products %}
       {% for p in products %}
       <swiper-slide>
-
+<a href="{% url 'services:services_list' %}" class="print__link">
           {% if p.title_image %}
           <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
           {% endif %}
@@ -29,7 +29,7 @@
       {% get_random_services_2_9 as products %}
       {% for p in products %}
       <li class="print__item">
-
+<a href="{% url 'services:services_list' %}" class="print__link">
           {% if p.title_image %}
           <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
           {% endif %}

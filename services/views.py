@@ -18,7 +18,9 @@ class ServiceItemView(ListView):
     context_object_name = 'item'
 
     def get_queryset(self):
-        return ServiceItem.objects.filter(service__slug=self.kwargs['slug'])
+        return (ServiceItem.objects.filter(service__slug=self.kwargs['slug']).
+                select_related('service').
+                prefetch_related('tags_s'))
 
     # @staticmethod
     # def get_services():

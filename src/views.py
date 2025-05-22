@@ -22,6 +22,10 @@ class ShowUserAgreement(DetailView):
         return UserAgreement.objects.get()
 
 
+class ShowRobotsView(TemplateView):
+    template_name = 'robots.txt'
+    content_type = 'text/plain'
+
 def handler_404(request, exception):
     return render(request, template_name='src/handlers/error_404.html')
 

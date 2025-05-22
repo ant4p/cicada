@@ -105,13 +105,14 @@
                             <p>Мы работаем с надёжной службой доставки CDEK, чтобы ваш заказ прибыл быстро и в целости. Либо вы можете забрать товар из нашей мастерской. Оплата осуществляется удобным переводом на карту после согласования всех деталей. Оформляйте заказ, и мы позаботимся о всём остальном!</p>
                         </div>
 
-                        {% if item.tags %}
-
+                        {% if item.tags_p.all %}
+<br>
                         <div class="full-product__block-label text text--main-2-light">Тэги</div>
+                        <br>
                         <ul class="catalog__filters">
 
-                            {% for t in item.tags.all %}
-                            {% if t.tags %}
+                            {% for t in item.tags_p.all %}
+                            {% if t.tags_p %}
 
                             <li class="catalog__filter">
                                 <a class="catalog__link link" href="{{ t.get_absolute_url }}" >#{{ t.title }}</a>

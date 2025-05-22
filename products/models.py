@@ -30,7 +30,7 @@ class Product(models.Model):
     image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_3')
     image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_4')
     image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_5')
-    tags = models.ManyToManyField(Tag, blank=True, related_name='tags', verbose_name='Тэги')
+    tags_p = models.ManyToManyField(Tag, blank=True, related_name='tags_p', verbose_name='Тэги')
 
     class Meta:
         db_table = 'product'

@@ -12,12 +12,16 @@ class ArticlesListView(ListView):
     context_object_name = 'articles_list'
 
     def get_queryset(self):
+
         return Article.objects.all()
 
 class ArticleView(DetailView):
     model = Article
     template_name = 'articles/article.html'
     context_object_name = 'item'
+
+    def get_queryset(self):
+        return Article.objects.filter().prefetch_related('tags_a')
 
     def get_success_url(self):
         return reverse('article', kwargs={'slug':self.object.slug})

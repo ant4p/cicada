@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from tags.models import Tag
+
 
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name='Title')
@@ -9,8 +11,8 @@ class Service(models.Model):
 
     class Meta:
         db_table = 'service'
-        verbose_name = 'Услуга'
-        verbose_name_plural = 'Услуги'
+        verbose_name = 'Вид Услуги'
+        verbose_name_plural = 'Виды Услуг'
 
 
     def __str__(self):
@@ -27,6 +29,7 @@ class ServiceItem(models.Model):
     price = models.PositiveSmallIntegerField(verbose_name='Price', blank=True, null=True)
     show_contacts = models.BooleanField(verbose_name="Show_contacts", default=True)
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='Service', verbose_name='Service')
+    tags_s = models.ManyToManyField(Tag, blank=True, related_name='tags_s', verbose_name='Тэги')
 
     class Meta:
         db_table = 'service_item'

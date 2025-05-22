@@ -30,7 +30,7 @@ def get_random_product_4():
 
 @register.simple_tag()
 def get_random_product_2():
-    products = Product.objects.filter(in_catalog=True)
+    products = Product.objects.filter(in_catalog=True).select_related('category').prefetch_related()
     try:
         random_products = random.choices(products, k=2)
         return random_products

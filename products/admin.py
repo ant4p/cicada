@@ -14,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         'in_catalog',
         'category',
         'title_image',
-        'tags',
+        'tags_p',
         'post_title_image',
         'image1',
         'post_image1',
@@ -36,7 +36,7 @@ class ProductAdmin(admin.ModelAdmin):
         'post_image4',
         'post_image5'
     ]
-    list_display = ('id', 'title', 'price','in_catalog','tags__title', 'post_title_image', 'category')
+    list_display = ('id', 'title', 'price','in_catalog', 'post_title_image', 'category')
     list_display_links = ('id', 'title', )
     list_editable = ('price', 'in_catalog', )
     list_per_page = 10

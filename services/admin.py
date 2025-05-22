@@ -16,6 +16,7 @@ class ServiceItemAdmin(admin.ModelAdmin):
         'service',
         'title_image',
         'post_title_image',
+        'tags_s',
         'content',
         'price',
         'show_contacts',

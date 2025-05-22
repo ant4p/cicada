@@ -10,14 +10,14 @@ def get_services():
 
 @register.simple_tag()
 def get_services_items():
-    return ServiceItem.objects.all()
+    return ServiceItem.objects.filter().select_related('service')
 
 # Делаем теги для случайного отображения экземпляров объектов для услуги №2
 # и вывода наименования этой услуги
 
 @register.simple_tag()
 def get_random_services_1_9():
-    services = ServiceItem.objects.filter(service__pk=1)
+    services = ServiceItem.objects.filter(service__pk=1).select_related('service')
     if len(services) < 9:
         return services
     else:
@@ -30,7 +30,7 @@ def get_random_services_1_9():
 
 @register.simple_tag()
 def get_random_services_for_title_1():
-    services = ServiceItem.objects.filter(service__pk=1)
+    services = ServiceItem.objects.filter(service__pk=1).select_related('service')
     try:
         random_services = random.choices(services, k=1)
         return random_services
@@ -44,7 +44,7 @@ def get_random_services_for_title_1():
 
 @register.simple_tag()
 def get_random_services_2_9():
-    services = ServiceItem.objects.filter(service__pk=2)
+    services = ServiceItem.objects.filter(service__pk=2).select_related('service')
     if len(services) < 9:
         return services
     else:
@@ -56,7 +56,7 @@ def get_random_services_2_9():
 
 @register.simple_tag()
 def get_random_services_for_title_2():
-    services = ServiceItem.objects.filter(service__pk=2)
+    services = ServiceItem.objects.filter(service__pk=2).select_related('service')
     try:
         random_services = random.choices(services, k=1)
         return random_services

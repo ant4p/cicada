@@ -34,7 +34,25 @@
 
                             <p>{{ s.content|linebreaksbr }}</p>
 
-                        </div>
+{% if s.tags_s.all %}
+                            <br>
+          <div class="full-product__block-label text text--main-2-light">Тэги</div>
+                            <br>
+                        <ul class="catalog__filters">
+
+                            {% for t in s.tags_s.all %}
+                            {% if t.tags_s %}
+
+                            <li class="catalog__filter">
+                                <a class="catalog__link link" href="{{ t.get_absolute_url }}" >#{{ t.title }}</a>
+                            </li>
+
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+        </div>
+
+
 
                         {% if s.show_contacts %}
 
@@ -43,6 +61,7 @@
                         {% endif %}
 
                     </div>
+                    {% endif %}
                 </article>
 
                 {% endfor %}

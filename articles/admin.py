@@ -11,6 +11,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'title_image',
         'post_title_image',
         'is_published',
+        'tags_a',
         'content',
     ]
     prepopulated_fields = {'slug': ('title',)}

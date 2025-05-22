@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from cicada import settings
+from src.views import ShowRobotsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('articles/', include('articles.urls', namespace='articles')),
     path('tags/', include('tags.urls', namespace='tags')),
+    path('robots.txt', ShowRobotsView.as_view(content_type='text/plain'), name='robots'),
 ]
 
 if settings.DEBUG:

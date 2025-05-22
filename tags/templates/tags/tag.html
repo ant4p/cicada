@@ -11,34 +11,105 @@
                 <h1 class="catalog__title title">Тэги</h1>
                 <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
             </div>
+
             {% include 'tags/tags_list.html' %}
 
+            <div class="catalog__products-body">
 
-<div class="catalog__products-body">
+                {% for p in products_data %}
 
-            {% for i in item %}
+                <article class="catalog__product product">
+                    <a href="{{ p.get_absolute_url }}" class="product__link"></a>
 
-            <article class="catalog__product product">
-                            <a href="{{ i.get_absolute_url }}" class="product__link"></a>
-                            <div class="product__preview">
+                    <div class="product__preview">
 
-                                {% if i.title_image %}
-                                {% include 'products/product_contacts_list.html' %}
+                        {% if p.title_image %}
+                        {% include 'products/product_contacts_list.html' %}
 
-                                <img src="{{ i.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+                        <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
 
-                                {% endif %}
+                        {% endif %}
 
-                            </div>
-                            <div class="product__footer">
-                                <h3 class="product__title text text--regular">{{ i.title }}</h3>
-                                <div class="product__price text text--regular">{{ i.price }}₽</div>
+                    </div>
+                    <div class="product__footer">
+                        <h3 class="product__title text text--regular">{{ p.title }}</h3>
 
-                            </div>
-                        </article>
-{% endfor %}
+                        <div class="product__price text text--regular">{{ p.price }}₽</div>
+
+                        {% for t in p.tags_p.all %}
+
+                        <a class="product__price text text--regular">#{{ t.title }}</a>
+
+                        {% endfor %}
+                    </div>
+                </article>
+
+                {% endfor %}
+
+                {% for a in articles_data %}
+
+                <article class="catalog__product product">
+                    <a href="{{ a.get_absolute_url }}" class="product__link"></a>
+
+                    <div class="product__preview">
+
+                        {% if a.title_image %}
+                        {% include 'products/product_contacts_list.html' %}
+
+                        <img src="{{ a.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+
+                        {% endif %}
+
+                    </div>
+                    <div class="product__footer">
+                        <h3 class="product__title text text--regular">{{ a.title }}</h3>
+
+
+
+                        {% for t in a.tags_a.all %}
+
+                        <a class="product__price text text--regular">#{{ t.title }}</a>
+
+                        {% endfor %}
+                    </div>
+                </article>
+
+                {% endfor %}
+
+                {% for s in services_data %}
+
+                <article class="catalog__product product">
+                    <a href="{% url 'services:services_list' %}" class="product__link"></a>
+
+                    <div class="product__preview">
+
+                        {% if s.title_image %}
+                        {% include 'products/product_contacts_list.html' %}
+
+                        <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
+
+                        {% endif %}
+
+                    </div>
+                    <div class="product__footer">
+                        <h3 class="product__title text text--regular">{{ s.title }}</h3>
+                        {% if s.price %}
+                        <div class="product__price text text--regular">{{ s.price }}₽</div>
+                        {% endif %}
+
+
+                        {% for t in s.tags_s.all %}
+
+                        <a class="product__price text text--regular">#{{ t.title }}</a>
+
+                        {% endfor %}
+                    </div>
+                </article>
+
+                {% endfor %}
+
+            </div>
         </div>
-
     </section>
 </main>
 
