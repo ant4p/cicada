@@ -1,6 +1,7 @@
 #!/bin/sh
 
-until [ python manage.py migrate ];
+until python manage.py migrate
+
 do
   echo "..."
   sleep 15
