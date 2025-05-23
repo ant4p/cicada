@@ -3,6 +3,8 @@ services:
     image: postgres:15
     container_name: db
     restart: always
+    ports:
+      - "5432:5432"
     volumes:
       - ~/.pg.pg_data/cicada:/var/lib/postgresql/data
     env_file:
