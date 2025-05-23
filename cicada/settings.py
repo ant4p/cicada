@@ -27,6 +27,7 @@ load_dotenv()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 env_debug = os.getenv('DEBUG', 'False')
+
 if env_debug == 'False':
     DEBUG = False
 else:
