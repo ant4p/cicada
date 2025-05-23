@@ -10,7 +10,7 @@ class Service(models.Model):
     content = models.TextField(blank=True, verbose_name='Текст')
 
     class Meta:
-
+        db_table = 'service'
         verbose_name = 'Вид Услуги'
         verbose_name_plural = 'Виды Услуг'
 
@@ -32,7 +32,7 @@ class ServiceItem(models.Model):
     tags_s = models.ManyToManyField(Tag, blank=True, related_name='tags_s', verbose_name='Тэги')
 
     class Meta:
-
+        db_table = 'serviceitem'
         verbose_name = 'Наполнение услуги'
         verbose_name_plural = 'Наполнение услуги'
 

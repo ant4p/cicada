@@ -13,7 +13,7 @@ class Article(models.Model):
     content = models.TextField(blank=True, verbose_name='Текст статьи')
 
     class Meta:
-
+        db_table = 'article'
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
