@@ -9,6 +9,7 @@ do
   echo from django.contrib.auth import get_user_model;
   sleep 5
   echo User = get_user_model()
+  sleep 5
   echo User.objects.create_superuser('admin', 'admin@myproject.com', '123')
   sleep 5
 
