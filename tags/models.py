@@ -7,7 +7,7 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=16,db_index=True, unique=True, verbose_name="Slug")
 
     class Meta:
-        db_table = 'tag'
+
         verbose_name = 'Тэг'
         verbose_name_plural = 'Тэги'
 

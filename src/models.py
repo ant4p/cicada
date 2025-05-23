@@ -6,7 +6,7 @@ class IndexVideo(models.Model):
     video = models.FileField(upload_to='videos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Видео на главной странице' )
 
     class Meta:
-        db_table = 'title_video'
+
         verbose_name = 'Видео(главная страница)'
         verbose_name_plural = 'Видео(главная страница)'
 
@@ -20,7 +20,7 @@ class UserAgreement(models.Model):
     content = models.TextField(blank=True, verbose_name='Текст соглашения')
 
     class Meta:
-        db_table = 'agreement'
+
         verbose_name = 'Пользовательское соглашение'
         verbose_name_plural = 'Пользовательское соглашение'
 
@@ -32,7 +32,7 @@ class TitleImageCooperation(models.Model):
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Тёмная Абстракция Высокое_качество)')
 
     class Meta:
-        db_table = 'title_image_cooperation'
+
         verbose_name = 'Титульное изображение(блок сотрудничество)'
         verbose_name_plural = 'Титульное изображение(блок сотрудничество)'
 
@@ -51,7 +51,7 @@ class CaseCooperation(models.Model):
     text_result = models.TextField(blank=True, verbose_name='Текст блока результат')
 
     class Meta:
-        db_table = 'case_cooperation'
+
         verbose_name = 'Кейс(блок сотрудничество)'
         verbose_name_plural = 'Кейс(блок сотрудничество)'
 

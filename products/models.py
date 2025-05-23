@@ -9,7 +9,7 @@ class ProductCategory(models.Model):
     slug = models.SlugField(max_length=50, unique=True, db_index=True, verbose_name='Slug')
 
     class Meta:
-        db_table = 'product_category'
+
         verbose_name = 'Категории продуктов'
         verbose_name_plural = 'Категории продуктов'
 
@@ -33,7 +33,7 @@ class Product(models.Model):
     tags_p = models.ManyToManyField(Tag, blank=True, related_name='tags_p', verbose_name='Тэги')
 
     class Meta:
-        db_table = 'product'
+
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
