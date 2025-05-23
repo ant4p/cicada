@@ -1,0 +1,7 @@
+location /static/ {
+    alias /cicada/static/;
+}
+
+location /media/ {
+    alias /cicada/media/;
+}

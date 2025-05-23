@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    restart: always
+    volumes:
+      - ~/.pg.pg_data/cicada:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  cicada:
+    build:
+      context: .
+    container_name: cicada
+    image: cicada
+    restart: always
+    entrypoint: /cicada/start.sh
+    depends_on:
+      - db
+    volumes:
+      - static:/cicada/static
+      - media:/cicada/media
+    env_file:
+      - .env
+    environment:
+      - VIRTUAL_HOST=${ALLOWED_HOST}
+      - LETSENCRYPT_HOST=${ALLOWED_HOST}
+      - DEFAULT_HOST=${ALLOWED_HOST}
+
+  nginx:
+    build:
+      context: ./nginx/
+    container_name: nginx
+    restart: always
+    volumes:
+      - static:/cicada/static
+      - media:/cicada/media
+      - certs:/etc/nginx/certs:ro
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - cicada
+    ports:
+      - "80:80"
+      - "443:443"
+
+  acme_companion:
+    image: nginxproxy/acme-companion
+    container_name: acme
+    volumes_from:
+      - nginx
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+      - certs:/etc/nginx/certs:rw
+
+volumes:
+  static:
+  media:
+  certs:
+  vhost:
+  html:
+  acme:
