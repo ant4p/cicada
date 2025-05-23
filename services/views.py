@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.urls import reverse
-from django.views.generic import TemplateView, ListView, DetailView
+
+from django.views.generic import ListView
 
 from services.models import Service, ServiceItem
 
@@ -21,10 +20,6 @@ class ServiceItemView(ListView):
         return (ServiceItem.objects.filter(service__slug=self.kwargs['slug']).
                 select_related('service').
                 prefetch_related('tags_s'))
-
-    # @staticmethod
-    # def get_services():
-    #     return Service.objects.all()
 
 
 

@@ -7,42 +7,58 @@
 <main class="main">
     <section class="full-product">
         <div class="full-product__inner container">
+
             {% if item.in_catalog %}
+
             <h1 class="full-product__title title">{{ item.title }}</h1>
             <div class="full-product__body">
                 <div class="full-product__preview">
                     <div class="full-product__slider-container">
                         <swiper-container class="full-product__slider" init="false">
+
                             {% if item.title_image %}
+
                             <swiper-slide>
                                 <img src="{{ item.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
                             {% if item.image1 %}
+
                             <swiper-slide>
                                 <img src="{{ item.image1.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
                             {% if item.image2 %}
+
                             <swiper-slide>
                                 <img src="{{ item.image2.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
                             {% if item.image3 %}
+
                             <swiper-slide>
                                 <img src="{{ item.image3.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
                             {% if item.image4 %}
+
                             <swiper-slide>
                                 <img src="{{ item.image4.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
                             {% if item.image5 %}
+
                             <swiper-slide>
                                 <img src="{{ item.image5.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image">
                             </swiper-slide>
+
                             {% endif %}
+
                         </swiper-container>
                         <button class="full-product__navigation-button full-product__navigation-button--prev">
                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,36 +72,49 @@
                         </button>
                     </div>
                     <swiper-container class="full-product__thumbs" init="false">
+
                         {% if item.title_image %}
                         <swiper-slide>
                             <img src="{{ item.title_image.url }}"  alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
                         {% if item.image1 %}
+
                         <swiper-slide>
                             <img src="{{ item.image1.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
                         {% if item.image2 %}
+
                         <swiper-slide>
                             <img src="{{ item.image2.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
                         {% if item.image3 %}
+
                         <swiper-slide>
                             <img src="{{ item.image3.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
                         {% if item.image4 %}
+
                         <swiper-slide>
                             <img src="{{ item.image4.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
                         {% if item.image5 %}
+
                         <swiper-slide>
                             <img src="{{ item.image5.url }}" alt="Продукт" decoding="async" loading="lazy" class="full-product__image is-thumb">
                         </swiper-slide>
+
                         {% endif %}
+
                     </swiper-container>
                 </div>
                 <div class="full-product__content">
@@ -106,7 +135,8 @@
                         </div>
 
                         {% if item.tags_p.all %}
-<br>
+
+                        <br>
                         <div class="full-product__block-label text text--main-2-light">Тэги</div>
                         <br>
                         <ul class="catalog__filters">
@@ -120,8 +150,11 @@
 
                             {% endif %}
                             {% endfor %}
+
                         </ul>
+
                         {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -129,6 +162,7 @@
             {% include 'products/see_also_products.html' %}
 
             {% endif %}
+
         </div>
     </section>
 </main>

@@ -1,26 +1,63 @@
 <section class="our-case">
-        <div class="our-case__inner container">
-          <div class="section-header">
+    <div class="our-case__inner container">
+        <div class="section-header">
             <h2 class="section-header__title text text--main-2-light">Хотите увидеть ваш проект в наших кейсах?</h2>
             <div class="section-header__subtitle title">Наши кейсы</div>
-          </div>
-          <div class="our-case__body">
-            <img srcset="/static/assets/images/case-320x240.jpg 320w, /static/assets/images/case-400x300.jpg 400w, /static/assets/images/case-530x399.jpg 530w" src="/static/assets/images/case-530x399.jpg" sizes="(min-width: 530px) 530px, 100vw" width="530" height="399" alt="Case" decoding="async" loading="lazy" class="our-case__image">
+        </div>
+
+        {% if case_data %}
+        {% for c in case_data %}
+
+        <div class="our-case__body">
+
+            {% if c.title_image  %}
+
+            <img src="{{ c.title_image.url }}" alt="Case" decoding="async" loading="lazy" class="our-case__image">
+
+            {% endif %}
+
             <div class="our-case__content">
-              <h3 class="our-case__title title title--small">Кейс: Создание детских игрушек</h3>
-              <div class="our-case__block">
+                <h3 class="our-case__title title title--small">{{ c.title_case }}</h3>
+                <div class="our-case__block">
+                    <div class="our-case__block-title  text text--big">{{ c.title_task }}</div>
+                    <div class="our-case__block-text text">{{ c.text_task|linebreaksbr }}</div>
+                </div>
+                <div class="our-case__block">
+                    <div class="our-case__block-title text text--big">{{ c.title_solution }}</div>
+                    <div class="our-case__block-text text">{{ c.text_solution|linebreaksbr }}</div>
+                </div>
+                <div class="our-case__block is-result">
+                    <div class="our-case__block-title text text--big">{{ c.title_result }}</div>
+                    <div class="our-case__block-text text">{{ c.text_result|linebreaksbr }}</div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="our-case__body">
+        <img src="/static/assets/images/cooperation/case_image_default.jpg" alt="Case" decoding="async" loading="lazy" class="our-case__image">
+        <div class="our-case__content">
+            <h3 class="our-case__title title title--small">Кейс: Создание детских игрушек</h3>
+            <div class="our-case__block">
                 <div class="our-case__block-title  text text--big">Задача клиента:</div>
                 <div class="our-case__block-text text">Создать линейку безопасных и ярких игрушек (корабликов, драконов) для продажи в детских магазинах. Основное требование — экологичность материалов и прочность изделий</div>
-              </div>
-              <div class="our-case__block">
+            </div>
+            <div class="our-case__block">
                 <div class="our-case__block-title text text--big">Решение от мастерской 3D CICADA</div>
                 <div class="our-case__block-text text">Подготовка 3D-моделей для игрушек на основе эскизов клиента.<br>• Печать изделий на FDM-принтерах с использованием PLA-пластика, безопасного для детей.<br>• Детальная постобработка: шлифовка, окрашивание гипоаллергенными красками.</div>
-              </div>
-              <div class="our-case__block is-result">
+            </div>
+            <div class="our-case__block is-result">
                 <div class="our-case__block-title text text--big">Результат:</div>
                 <div class="our-case__block-text text">Завершение проекта за 14 рабочих дней. <br>• Выпущено 100 изделий с высоким качеством детализации</div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+
+    {% endif %}
+
+</section>

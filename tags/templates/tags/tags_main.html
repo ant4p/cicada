@@ -7,16 +7,11 @@
     <section class="catalog">
         <div class="catalog__inner container">
             <div class="catalog__header">
-                <h1 class="catalog__title title">Тэги</h1>
-                <div class="catalog__text text hidden-mobile">Приобрести изделие можно через WhatsApp / Telegram</div>
+                <a class="catalog__title title" href="{% url 'tags:tags_list' %}">#Тэги</a>
+                <div class="catalog__text text hidden-mobile">Найдите всё, что вас интересует по #Тэгу </div>
             </div>
 
             {% include 'tags/tags_list.html' %}
-
-
-            </div>
-
-
 
         </div>
     </section>

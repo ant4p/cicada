@@ -5,9 +5,16 @@ from services.models import Service, ServiceItem
 
 
 class ServiceAdmin(admin.ModelAdmin):
+    fields = [
+        'title',
+        'slug',
+    ]
     prepopulated_fields = {'slug': ('title',)}
-
-    list_display = ('id', 'title',)
+    list_display = ('title',)
+    list_display_links = ('title',)
+    list_per_page = 10
+    search_fields = ['title', ]
+    save_on_top = True
 
 class ServiceItemAdmin(admin.ModelAdmin):
     fields = [
@@ -25,19 +32,20 @@ class ServiceItemAdmin(admin.ModelAdmin):
     readonly_fields = [
         'post_title_image'
     ]
-    list_display = ('id', 'title', 'service','show_contacts', 'post_title_image', 'price', )
-    list_display_links = ('id', 'title', )
+    list_display = ('title', 'service','show_contacts', 'post_title_image', 'price', )
+    list_display_links = ('title', )
+    list_per_page = 10
     list_editable = ('service', 'show_contacts', 'price', )
     search_fields = [
         'title',
-        'service__title'
+        'service__title',
     ]
     list_filter = [
-        'service__title'
+        'service__title',
+        'show_contacts',
     ]
-
-
     save_on_top = True
+
 
     @admin.display(description='Титульное изображение')
     def post_title_image(self, ServiceItem):

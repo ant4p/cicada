@@ -21,6 +21,10 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'is_published', 'post_title_image', )
     list_display_links = ('title', )
     list_editable = ('is_published', )
+    list_per_page = 10
+    search_fields = ['title', ]
+    list_filter = ['is_published', ]
+    save_on_top = True
 
 
 

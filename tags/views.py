@@ -29,8 +29,6 @@ class TagView(ListView):
                                     prefetch_related('tags_s'))
         return context
 
-
-
     def get_queryset(self):
         pass
 

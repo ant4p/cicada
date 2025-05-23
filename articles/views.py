@@ -1,6 +1,3 @@
-
-
-from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
@@ -12,8 +9,8 @@ class ArticlesListView(ListView):
     context_object_name = 'articles_list'
 
     def get_queryset(self):
-
         return Article.objects.all()
+
 
 class ArticleView(DetailView):
     model = Article

@@ -2,14 +2,16 @@
 {% load product_tags %}
 
 <ul class="catalog__filters">
+
     {% get_categories as category %}
     {% for c in category %}
+
     <li class="catalog__filter">
         <a class="catalog__link link" href="#{{ c.title }}" >{{ c.title }}</a>
     </li>
+
     {% endfor %}
+
 </ul>
 
-
 {% endblock content %}
-

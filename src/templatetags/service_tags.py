@@ -5,17 +5,18 @@ from services.models import *
 register = template.Library()
 
 @register.simple_tag()
+# Тег для отображения всех экземпляров модели Service из БД
+# используется в 'services_main.html' и 'service.html'
+# базовый шаблон 'services_list.html'
 def get_services():
     return Service.objects.all()
 
-@register.simple_tag()
-def get_services_items():
-    return ServiceItem.objects.filter().select_related('service')
-
-# Делаем теги для случайного отображения экземпляров объектов для услуги №2
-# и вывода наименования этой услуги
 
 @register.simple_tag()
+# Теги для отображения случайных экземпляров модели
+# в количестве 9 штук для наполнения сервисов(3D моделирование)
+# используется в 'index.html'
+# базовый шаблон 'services_catalog_1.html'
 def get_random_services_1_9():
     services = ServiceItem.objects.filter(service__pk=1).select_related('service')
     if len(services) < 9:
@@ -27,7 +28,6 @@ def get_random_services_1_9():
         except IndexError:
             pass
 
-
 @register.simple_tag()
 def get_random_services_for_title_1():
     services = ServiceItem.objects.filter(service__pk=1).select_related('service')
@@ -38,11 +38,11 @@ def get_random_services_for_title_1():
         pass
 
 
-
-# Делаем теги для случайного отображения экземпляров объектов для услуги №3
-# и вывода наименования этой услуги
-
 @register.simple_tag()
+# Теги для отображения случайных экземпляров модели
+# в количестве 9 штук для наполнения сервисов(3D визуализация)
+# используется в 'index.html'
+# базовый шаблон 'services_catalog_2.html'
 def get_random_services_2_9():
     services = ServiceItem.objects.filter(service__pk=2).select_related('service')
     if len(services) < 9:
