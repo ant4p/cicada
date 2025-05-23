@@ -4,7 +4,7 @@ until python manage.py migrate
 
 do
   echo "..."
-  sleep 15
+  sleep 20
 
 done
 
