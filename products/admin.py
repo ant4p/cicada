@@ -11,8 +11,8 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'in_catalog',
         'category',
-        'title_image',
         'tags_p',
+        'title_image',
         'post_title_image',
         'image1',
         'post_image1',
@@ -57,25 +57,25 @@ class ProductAdmin(admin.ModelAdmin):
     @admin.display(description='Изображение_2')
     def post_image2(self, Product):
         if Product.image2:
-            return mark_safe(f"<img src='{Product.image1.url}' width=75>")
+            return mark_safe(f"<img src='{Product.image2.url}' width=75>")
         return 'Нет фото'
 
     @admin.display(description='Изображение_3')
     def post_image3(self, Product):
         if Product.image3:
-            return mark_safe(f"<img src='{Product.image1.url}' width=75>")
+            return mark_safe(f"<img src='{Product.image3.url}' width=75>")
         return 'Нет фото'
 
     @admin.display(description='Изображение_4')
     def post_image4(self, Product):
         if Product.image4:
-            return mark_safe(f"<img src='{Product.image1.url}' width=75>")
+            return mark_safe(f"<img src='{Product.image4.url}' width=75>")
         return 'Нет фото'
 
     @admin.display(description='Изображение_5')
     def post_image5(self, Product):
         if Product.image5:
-            return mark_safe(f"<img src='{Product.image1.url}' width=75>")
+            return mark_safe(f"<img src='{Product.image5.url}' width=75>")
         return 'Нет фото'
 
 

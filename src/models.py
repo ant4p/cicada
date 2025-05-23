@@ -29,7 +29,7 @@ class UserAgreement(models.Model):
 
 class TitleImageCooperation(models.Model):
     title = models.CharField(max_length=50, verbose_name='Заголовок', default='Титульное изображение(блок сотрудничество)')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Тёмная Абстракция Высокое_качество)')
 
     class Meta:
         db_table = 'title_image_cooperation'
@@ -41,7 +41,7 @@ class TitleImageCooperation(models.Model):
 
 class CaseCooperation(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок', default='Кейс(блок сотрудничество)')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Квадрат min_420x420px)')
     title_case = models.CharField(max_length=100, verbose_name='Заголовок кейса', default='Кейс: Создание детских игрушек')
     title_task = models.CharField(max_length=100, verbose_name='Заголовок блока задача',default='Задача клиента:')
     text_task = models.TextField(blank=True, verbose_name='Текст блока задача')

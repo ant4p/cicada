@@ -24,12 +24,12 @@ class Product(models.Model):
     price = models.PositiveSmallIntegerField(verbose_name='Цена')
     in_catalog = models.BooleanField(default=True, verbose_name='В каталоге')
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='Category', verbose_name='Категория')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение')
-    image1 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_1')
-    image2 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_2')
-    image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_3')
-    image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_4')
-    image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_5')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Квадрат min_420x420px)')
+    image1 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_1 (Квадрат min_420x420px)')
+    image2 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_2 (Квадрат min_420x420px)' )
+    image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_3 (Квадрат min_420x420px)')
+    image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_4 (Квадрат min_420x420px)')
+    image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение_5 (Квадрат min_420x420px)')
     tags_p = models.ManyToManyField(Tag, blank=True, related_name='tags_p', verbose_name='Тэги')
 
     class Meta:
