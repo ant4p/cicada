@@ -8,6 +8,7 @@ class ServiceAdmin(admin.ModelAdmin):
     fields = [
         'title',
         'slug',
+        'content'
     ]
     prepopulated_fields = {'slug': ('title',)}
     list_display = ('title',)

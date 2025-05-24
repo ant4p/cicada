@@ -16,7 +16,7 @@
             <article class="sevices__service service">
                 <a class="service__link" href="{{ s.get_absolute_url }}">
                     <h3 class="service__title text text--big">{{ s.title }}</h3>
-                    <p class="service__description text text--regular">{{ s.content }}</p>
+                    <p class="service__description text text--regular">{{ s.content|linebreaksbr }}</p>
                 </a>
             </article>
 
