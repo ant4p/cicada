@@ -14,12 +14,13 @@ done
 
 sleep 5
 
-if
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.get(is_superuser=True) == []" | python manage.py shell
-
-then
 echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', '123')" | python manage.py shell
-fi
+
+echo "from services.models import Service; Service.objects.create(title='3D Моделирование', slug='3d-modelirovanie', content='123')" | python manage.py shell
+
+echo "from services.models import Service; Service.objects.create(title='3D Визуализация', slug='3d-vizualizaciya', content='123')" | python manage.py shell
+
+
 
 python manage.py collectstatic --noinput
 
