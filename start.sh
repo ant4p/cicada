@@ -14,9 +14,9 @@ done
 
 sleep 5
 
-if python manage.py shell "from django.contrib.auth import get_user_model"
-python manage.py shell "User = get_user_model()"
-python manage.py shell "User.objects.get(is_superuser=True) == []"
+if python manage.py shell from django.contrib.auth import get_user_model;
+python manage.py shell User = get_user_model();
+python manage.py shell User.objects.get(is_superuser=True) == [];
 
 
 then
