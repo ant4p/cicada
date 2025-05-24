@@ -2,22 +2,19 @@
 
 {% block content %}
 
+{% if item %}
+
 <main class="main">
     <section class="contacts">
         <div class="contacts__inner container">
             <div class="section-header">
                 <div class="section-header__subtitle title">Пользовательское соглашение</div>
             </div>
-
-            {% if item %}
-
             <div class="contacts__text text">{{ item.content|linebreaksbr }}</div>
-
-            {% endif %}
-
         </div>
     </section>
 </main>
 
+{% endif %}
 
 {% endblock content %}
