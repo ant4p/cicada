@@ -5,7 +5,12 @@ from src.models import UserAgreement, TitleImageCooperation, CaseCooperation, In
 
 
 class ShowMainPage(TemplateView):
-    template_name = 'src/index.html'
+    def get_template_names(self):
+        context = self.get_context_data()
+        if context[[]]:
+            return ['src/index_start.html']
+        else:
+            return ['src/index.html']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -14,7 +19,12 @@ class ShowMainPage(TemplateView):
 
 
 class ShowCooperationPage(TemplateView):
-    template_name = 'src/cooperation.html'
+    def get_template_names(self):
+        context = self.get_context_data()
+        if context[[]]:
+            return ['src/cooperation_start.html']
+        else:
+            return ['src/cooperation.html']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
