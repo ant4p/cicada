@@ -8,7 +8,13 @@
             <div class="section-header">
                 <div class="section-header__subtitle title">Пользовательское соглашение</div>
             </div>
+
+            {% if item %}
+
             <div class="contacts__text text">{{ item.content|linebreaksbr }}</div>
+
+            {% endif %}
+
         </div>
     </section>
 </main>
