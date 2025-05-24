@@ -6,6 +6,7 @@
             <h2 class="section-header__title text text--main-2-light">Наши работы</h2>
 
             {% get_random_services_for_title_1 as products %}
+            {%  if products %}
             {% for p in products %}
 
             {% if p.service %}
@@ -14,11 +15,13 @@
 
             {% endif %}
             {% endfor %}
+            {% endif %}
 
         </div>
         <swiper-container class="print__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
 
             {% get_random_services_1_9 as products %}
+            {%  if products %}
             {% for p in products %}
 
             <swiper-slide>
@@ -34,12 +37,14 @@
             </swiper-slide>
 
             {% endfor %}
+            {% endif %}
 
         </swiper-container>
 
         <ul class="print__list">
 
             {% get_random_services_1_9 as products %}
+            {%  if products %}
             {% for p in products %}
 
             <li class="print__item">
@@ -54,6 +59,7 @@
             </li>
 
             {% endfor %}
+            {% endif %}
 
             <li class="print__item">
             </li>

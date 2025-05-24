@@ -10,6 +10,7 @@
         <div class="services__body">
 
             {% get_services as services %}
+            {% if services %}
             {% for s in services %}
 
             <article class="sevices__service service">
@@ -20,6 +21,7 @@
             </article>
 
             {% endfor %}
+            {% endif %}
 
             {% include 'services/services_contacts_list.html' %}
 

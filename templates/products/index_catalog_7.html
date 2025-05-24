@@ -9,6 +9,7 @@
     <swiper-container class="print__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
 
       {% get_random_product_7 as products %}
+      {% if products %}
       {% for p in products %}
 
       <swiper-slide>
@@ -42,6 +43,7 @@
       </li>
 
       {% endfor %}
+      {% endif %}
 
       <li class="print__item">
         <div class="print__description text">

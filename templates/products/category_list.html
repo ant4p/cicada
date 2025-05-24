@@ -4,6 +4,7 @@
 <ul class="catalog__filters">
 
     {% get_categories as category %}
+    {% if category %}
     {% for c in category %}
 
     <li class="catalog__filter">
@@ -11,6 +12,7 @@
     </li>
 
     {% endfor %}
+    {% endif %}
 
 </ul>
 

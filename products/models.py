@@ -9,7 +9,7 @@ class ProductCategory(models.Model):
     slug = models.SlugField(max_length=50, unique=True, db_index=True, verbose_name='Slug')
 
     class Meta:
-        db_table = 'productcategory'
+        db_table = 'product_category'
         verbose_name = 'Категории продуктов'
         verbose_name_plural = 'Категории продуктов'
 

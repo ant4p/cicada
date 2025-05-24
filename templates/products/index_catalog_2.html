@@ -9,6 +9,7 @@
         <div class="ready-projects__body">
 
             {% get_random_product_2 as products %}
+            {% if products %}
             {% for p in products %}
 
             <article class="ready-projects__product product">
@@ -31,6 +32,7 @@
             </article>
 
             {% endfor %}
+            {% endif %}
 
             <div class="ready-projects__description">
                 <div class="ready-projects__text text">Каждое из них напечатано из безопасных и прочных материалов, чтобы радовать вас или стать идеальным подарком для любимого человека</div>

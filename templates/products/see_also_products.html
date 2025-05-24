@@ -5,6 +5,7 @@
     <div class="full-product__footer-body">
 
         {% get_random_product_4 as products %}
+        {% if products %}
         {% for p in products %}
 
         <article class="full-product__footer-product product">
@@ -27,6 +28,7 @@
         </article>
 
         {% endfor %}
+        {% endif %}
 
     </div>
 </div>
