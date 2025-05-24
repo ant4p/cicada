@@ -2,18 +2,29 @@
 
 {% block content %}
 
-{% if item %}
+{% if agreement_data %}
+
+{% for a in agreement_data %}
+
 
 <main class="main">
     <section class="contacts">
         <div class="contacts__inner container">
             <div class="section-header">
-                <div class="section-header__subtitle title">Пользовательское соглашение</div>
+                <div class="section-header__subtitle title">{{ a.title }}</div>
             </div>
-            <div class="contacts__text text">{{ item.content|linebreaksbr }}</div>
+
+            {% if a.content %}
+
+            <div class="contacts__text text">{{ a.content|linebreaksbr }}</div>
+
+            {% endif %}
+
         </div>
     </section>
 </main>
+
+{% endfor %}
 
 {% endif %}
 

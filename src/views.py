@@ -27,13 +27,12 @@ class ShowContactsPage(TemplateView):
     template_name = 'src/contacts.html'
 
 
-class ShowUserAgreement(DetailView):
-    model = UserAgreement
+class ShowUserAgreement(TemplateView):
     template_name = 'src/user_agreement.html'
-    context_object_name = 'item'
 
-    def get_object(self, queryset=None):
-        return UserAgreement.objects.get()
+    def get_context_data(self, **kwargs):
+        contex = super().get_context_data(**kwargs)
+        contex['agreement_data'] = UserAgreement.objects.all()
 
 
 class ShowRobotsView(TemplateView):
