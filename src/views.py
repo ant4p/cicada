@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView
 
 from src.models import UserAgreement, TitleImageCooperation, CaseCooperation, IndexVideo
 

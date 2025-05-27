@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from cicada import settings
-from src.views import ShowRobotsView
+from src.views import ShowRobotsView, handler_404, handler_500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,3 +38,6 @@ if settings.DEBUG:
 
 admin.site.site_header = 'Панель управления'
 admin.site.index_title = 'CICADA 3D'
+
+handler404 = handler_404
+handler500 = handler_500
