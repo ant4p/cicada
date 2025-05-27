@@ -20,11 +20,14 @@ def get_categories():
 # базовый шаблон 'index_catalog_7.html'
 def get_random_product_7():
     products = Product.objects.filter(in_catalog=True)
-    try:
-        random_products = random.choices(products, k=7)
-        return random_products
-    except IndexError:
-        pass
+    if len(products) < 7:
+        return products
+    else:
+        try:
+            random_products = random.choices(products, k=7)
+            return random_products
+        except IndexError:
+            pass
 
 
 @register.simple_tag()

@@ -127,6 +127,15 @@
                         <div class="full-product__block full-product__description text">
                             <p>{{ item.content|linebreaksbr }}</p>
                         </div>
+
+                        {% if item.size %}
+                        <div class="full-product__block-label text text--main-2-light">Размеры:</div>
+                        <div class="full-product__block full-product__description text">
+                            <p>{{ item.size }}</p>
+                        </div>
+
+                        {% endif %}
+
                     </div>
                     <div class="full-product__block">
                         <div class="full-product__block-label text text--main-2-light">Оплата и доставка</div>

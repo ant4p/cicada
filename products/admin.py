@@ -8,6 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
         'title',
         'slug',
         'content',
+        'size',
         'price',
         'in_catalog',
         'category',
