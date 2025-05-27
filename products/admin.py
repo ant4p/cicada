@@ -10,6 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
         'content',
         'size',
         'price',
+        'price_choice',
         'in_catalog',
         'category',
         'tags_p',
@@ -35,9 +36,9 @@ class ProductAdmin(admin.ModelAdmin):
         'post_image4',
         'post_image5'
     ]
-    list_display = ('title', 'price','in_catalog', 'post_title_image', 'category', )
+    list_display = ('title', 'price', 'price_choice', 'in_catalog', 'post_title_image', 'category', )
     list_display_links = ('title', 'post_title_image', )
-    list_editable = ('price', 'in_catalog', 'category', )
+    list_editable = ('price', 'in_catalog', 'category', 'price_choice', )
     list_per_page = 10
     search_fields = ['title', 'category__title', ]
     list_filter = ['category__title', 'in_catalog', ]

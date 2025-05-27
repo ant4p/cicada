@@ -27,16 +27,17 @@ class ServiceItemAdmin(admin.ModelAdmin):
         'tags_s',
         'content',
         'price',
+        'price_choice',
         'show_contacts',
     ]
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
         'post_title_image'
     ]
-    list_display = ('title', 'service','show_contacts', 'post_title_image', 'price', )
+    list_display = ('title', 'service','show_contacts', 'post_title_image', 'price', 'price_choice', )
     list_display_links = ('title', )
     list_per_page = 10
-    list_editable = ('service', 'show_contacts', 'price', )
+    list_editable = ('service', 'show_contacts', 'price', 'price_choice', )
     search_fields = [
         'title',
         'service__title',
@@ -44,6 +45,7 @@ class ServiceItemAdmin(admin.ModelAdmin):
     list_filter = [
         'service__title',
         'show_contacts',
+        'price_choice',
     ]
     save_on_top = True
 
