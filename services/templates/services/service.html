@@ -49,21 +49,23 @@
                                 {% endfor %}
 
                             </ul>
+
+                            {% endif %}
+
                         </div>
 
                         {% if s.show_contacts %}
 
-                        {% include 'services/services_contacts_item.html' %}
+                        {% include 'contacts/services_contacts_item.html' %}
 
                         {% endif %}
 
                     </div>
 
-                    {% endif %}
-
                 </article>
 
                 {% endfor %}
+
             </div>
         </div>
     </section>

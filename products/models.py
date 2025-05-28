@@ -1,3 +1,4 @@
+from PIL import Image
 from django.db import models
 from django.urls import reverse
 
@@ -62,4 +63,13 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('products:product', kwargs={'slug': self.slug})
+
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.title_image.path)
+    #
+    #     if img.height != img.width:
+    #         output_size = (420, 420)
+    #         img.thumbnail(output_size)
+    #         img.save(self.title_image.path)
 

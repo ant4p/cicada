@@ -24,7 +24,7 @@
                     <div class="product__preview">
 
                         {% if p.title_image %}
-                        {% include 'products/product_contacts_list.html' %}
+                        {% include 'contacts/product_contacts_list.html' %}
 
                         <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
 
@@ -55,7 +55,7 @@
                     <div class="product__preview">
 
                         {% if a.title_image %}
-                        {% include 'products/product_contacts_list.html' %}
+                        {% include 'contacts/product_contacts_list.html' %}
 
                         <img src="{{ a.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
 
@@ -81,12 +81,12 @@
                 {% for s in services_data %}
 
                 <article class="catalog__product product">
-                    <a href="{% url 'services:services_list' %}" class="product__link"></a>
+                    <a href="{% url 'services:services_item' s.service.slug %}" class="product__link"></a>
 
                     <div class="product__preview">
 
                         {% if s.title_image %}
-                        {% include 'products/product_contacts_list.html' %}
+                        {% include 'contacts/product_contacts_list.html' %}
 
                         <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
 
