@@ -10,7 +10,7 @@
             {% get_random_services_for_title_1 as products %}
 
 
-            {%  if products %}
+            {% if products %}
             {% for p in products %}
 
             {% if p.service %}
@@ -18,7 +18,6 @@
             <div class="section-header__subtitle title">{{ p.service }}</div>
 
             {% endif %}
-
             {% endfor %}
             {% endif %}
 
@@ -51,10 +50,7 @@
 
         <ul class="print__list">
 
-
             {% get_random_services_1_9 as products %}
-
-
 
             {%  if products %}
             {% for p in products %}

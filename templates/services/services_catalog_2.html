@@ -39,6 +39,7 @@
                     <img src="{{ p.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
 
                     {% endif %}
+
                 </a>
             </swiper-slide>
 
@@ -46,11 +47,10 @@
             {% endif %}
 
         </swiper-container>
+
         <ul class="print__list">
 
-
             {% get_random_services_2_9 as products %}
-
 
             {% if products %}
             {% for p in products %}
