@@ -4,27 +4,27 @@
 
 {% if agreement_data %}
 
-{% for a in agreement_data %}
-
-
 <main class="main">
     <section class="contacts">
         <div class="contacts__inner container">
+            {% for ag in agreement_data %}
+
             <div class="section-header">
-                <div class="section-header__subtitle title">{{ a.title }}</div>
+                <div class="section-header__subtitle title">{{ ag.title }}</div>
             </div>
 
-            {% if a.content %}
+            {% if ag.content %}
 
-            <div class="contacts__text text">{{ a.content|linebreaksbr }}</div>
+            <div class="contacts__text text">{{ ag.content|linebreaksbr }}</div>
 
             {% endif %}
+            {% endfor %}
 
         </div>
     </section>
 </main>
 
-{% endfor %}
+
 
 {% endif %}
 
