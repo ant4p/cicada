@@ -1,4 +1,5 @@
 from django import template
+from django.core.cache import cache
 
 from tags.models import Tag
 
@@ -9,4 +10,6 @@ register = template.Library()
 # используется в 'tags_main.html' и 'tag.html'
 # базовый шаблон 'tag_list.html'
 def get_tags():
-    return Tag.objects.all()
+    tags = Tag.objects.all()
+    tags_cache = cache.get_or_set('tags', tags, 10)
+    return tags_cache

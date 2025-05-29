@@ -1,11 +1,15 @@
 {% load service_tags %}
+{% load cache %}
 
 <section class="print">
     <div class="print__inner container">
         <div class="section-header">
             <h2 class="section-header__title text text--main-2-light">Наши работы</h2>
 
+
             {% get_random_services_for_title_2 as products %}
+
+
             {% if products %}
             {% for p in products %}
 
@@ -20,7 +24,10 @@
         </div>
         <swiper-container class="print__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
 
+
             {% get_random_services_2_9 as products %}
+
+
             {% if products %}
             {% for p in products %}
 
@@ -41,7 +48,10 @@
         </swiper-container>
         <ul class="print__list">
 
+
             {% get_random_services_2_9 as products %}
+
+
             {% if products %}
             {% for p in products %}
 

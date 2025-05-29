@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load cache %}
 {% load tag_tags %}
-{% load product_tags %}
+
 
 {% block content %}
 
@@ -12,11 +13,15 @@
                 <div class="catalog__text text hidden-mobile">Найдите всё, что вас интересует по #Тэгу </div>
             </div>
 
+
             {% include 'tags/tags_list.html' %}
+
 
             <div class="catalog__products-body">
 
+
                 {% for p in products_data %}
+
 
                 <article class="catalog__product product">
                     <a href="{{ p.get_absolute_url }}" class="product__link"></a>
@@ -55,6 +60,7 @@
                     <div class="product__preview">
 
                         {% if a.title_image %}
+
                         {% include 'contacts/product_contacts_list.html' %}
 
                         <img src="{{ a.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
@@ -86,6 +92,7 @@
                     <div class="product__preview">
 
                         {% if s.title_image %}
+
                         {% include 'contacts/product_contacts_list.html' %}
 
                         <img src="{{ s.title_image.url }}" alt="Продукт" decoding="async" loading="lazy" class="product__image">
@@ -95,8 +102,11 @@
                     </div>
                     <div class="product__footer">
                         <h3 class="product__title text text--regular">{{ s.title }}</h3>
+
                         {% if s.price %}
+
                         <div class="product__price text text--regular">{{ s.price }}₽</div>
+
                         {% endif %}
 
 

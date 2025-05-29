@@ -2149,7 +2149,7 @@ hr {
 }
 
 .btn {
-	opacity: 0;
+    opacity: 0;
 	background-color: rgba(0, 0, 0, 0.5)#181818;
 	color: #fff;
 	padding: 15px 25px;

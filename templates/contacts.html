@@ -1,4 +1,9 @@
 {% load static %}
+{% load contacts_tags %}
+
+{% get_contacts as contacts %}
+{% if contacts %}
+{% for c in contacts %}
 
 <br>
 <br>
@@ -10,13 +15,72 @@
     </div>
     <div class="contacts__text text">Расскажите нам о своём проекте, и мы поможем воплотить его в реальность. Игрушки, сувениры, детали или что‑то уникальное — мы готовы к любым задачам!</div>
     <address class="contacts__body">
-      <a class="contacts__contact text text--big is-phone" href="tel:+7 (XXX) XXX-XX-XX"> +7 (XXX) XXX-XX-XX</a>
-      <a class="contacts__contact text text--big is-mail" href="mailto:info@cicada3d.ru"> info@cicada3d.ru</a>
-      <a class="contacts__contact is-whatsapp text text--big" href="/"> WhatsApp</a>
-      <a class="contacts__contact is-telegram text text--big" href="/"> Telegram</a>
+
+      {% if c.phone_url %}
+
+      <a class="contacts__contact text text--big is-phone" href="tel:{{ s.phone_url }}">{{ c.phone_title }}</a>
+
+      {% else %}
+
+      <a class="contacts__contact text text--big is-phone" href="">+7-___-___-__-__</a>
+
+      {% endif %}
+
+
+      {% if c.email_url %}
+
+      <a class="contacts__contact text text--big is-mail" href="mailto:{{ c.email_url}}">{{ c.email_title }}</a>
+
+      {% else %}
+
+      <a class="contacts__contact text text--big is-mail" href="">___@mail.ru</a>
+
+      {% endif %}
+
+      {% if c.whatsapp_url %}
+
+      <a class="contacts__contact is-whatsapp text text--big" href="{{ c.whatsapp_url }}">{{ c.whatsapp_title }}</a>
+
+      {% else %}
+
+      <a class="contacts__contact is-whatsapp text text--big" href=""> WhatsApp</a>
+
+      {% endif %}
+
+      {% if c.telegram_url %}
+
+      <a class="contacts__contact is-telegram text text--big" href="{{ c.telegram_url }}"> {{ c.telegram_title }}</a>
+
+      {% else %}
+
+      <a class="contacts__contact is-telegram text text--big" href=""> Telegram</a>
+
+      {% endif %}
+
     </address>
   </div>
 </section>
+
+{% endfor %}
+{% else %}
+
+<section class="contacts">
+  <div class="contacts__inner container">
+    <div class="section-header">
+      <h2 class="section-header__title text text--main-2-light">Мы всегда на связи</h2>
+      <div class="section-header__subtitle title">Контакты</div>
+    </div>
+    <div class="contacts__text text">Расскажите нам о своём проекте, и мы поможем воплотить его в реальность. Игрушки, сувениры, детали или что‑то уникальное — мы готовы к любым задачам!</div>
+    <address class="contacts__body">
+      <a class="contacts__contact text text--big is-phone" href="">+7-___-___-__-__</a>
+      <a class="contacts__contact text text--big is-mail" href="">___@mail.ru</a>
+      <a class="contacts__contact is-whatsapp text text--big" href="">WhatsApp</a>
+      <a class="contacts__contact is-telegram text text--big" href="">Telegram</a>
+    </address>
+  </div>
+</section>
+
+{% endif %}
 
 <section class="address">
   <div class="address__inner container">

@@ -1,5 +1,6 @@
 import random
 from django import template
+from django.core.cache import cache
 from services.models import *
 
 register = template.Library()
@@ -9,7 +10,10 @@ register = template.Library()
 # используется в 'services_main.html' и 'service.html'
 # базовый шаблон 'services_list.html'
 def get_services():
-    return Service.objects.all()
+    services = Service.objects.all()
+    cache_services = cache.get_or_set('services', services, 10)
+    return cache_services
+
 
 
 @register.simple_tag()
@@ -18,7 +22,13 @@ def get_services():
 # используется в 'index.html'
 # базовый шаблон 'services_catalog_1.html'
 def get_random_services_1_9():
-    services = ServiceItem.objects.filter(service__pk=1).select_related('service')
+    related_services = Service.objects.all()
+    cache_services = cache.get_or_set('related_services', related_services, 10)
+    try:
+        element = cache_services[0]
+        services = ServiceItem.objects.filter(service=element).select_related('service')
+    except:
+        services = []
     if len(services) < 9:
         return services
     else:
@@ -28,9 +38,15 @@ def get_random_services_1_9():
         except IndexError:
             pass
 
+
 @register.simple_tag()
 def get_random_services_for_title_1():
-    services = ServiceItem.objects.filter(service__pk=1).select_related('service')
+    related_services = Service.objects.all()
+    try:
+        element = related_services[0]
+        services = ServiceItem.objects.filter(service=element).select_related('service')
+    except IndexError:
+        services = []
     try:
         random_services = random.choices(services, k=1)
         return random_services
@@ -44,19 +60,32 @@ def get_random_services_for_title_1():
 # используется в 'index.html'
 # базовый шаблон 'services_catalog_2.html'
 def get_random_services_2_9():
-    services = ServiceItem.objects.filter(service__pk=2).select_related('service')
+    related_services= Service.objects.all()
+    cache_services = cache.get_or_set('related_services', related_services, 10)
+    try:
+        element = cache_services[1]
+        services = ServiceItem.objects.filter(service=element).select_related('service')
+    except IndexError:
+        services = []
+
     if len(services) < 9:
         return services
     else:
         try:
-            random_services = random.choices(services, k=9)
+            random_services = random.choices(cache_services, k=9)
             return random_services
         except IndexError:
             pass
 
 @register.simple_tag()
 def get_random_services_for_title_2():
-    services = ServiceItem.objects.filter(service__pk=2).select_related('service')
+    related_services = Service.objects.all()
+    try:
+        element = related_services[1]
+        services = ServiceItem.objects.filter(service=element).select_related('service')
+    except IndexError:
+        services = []
+
     try:
         random_services = random.choices(services, k=1)
         return random_services

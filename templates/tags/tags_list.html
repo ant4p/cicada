@@ -1,9 +1,13 @@
 {% block content %}
+{% load cache %}
 {% load tag_tags %}
 
 <ul class="catalog__filters">
 
+
     {% get_tags as tag %}
+
+
     {% for t in tag %}
 
     <li class="catalog__filter">

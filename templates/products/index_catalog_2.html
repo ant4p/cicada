@@ -1,4 +1,6 @@
 {% load product_tags %}
+{% load cache %}
+
 
 <section class="ready-projects">
     <div class="ready-projects__inner container">
@@ -8,7 +10,10 @@
         </div>
         <div class="ready-projects__body">
 
+
             {% get_random_product_2 as products %}
+
+
             {% if products %}
             {% for p in products %}
 

@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.urls import reverse
+from django.core.cache import cache
 from django.views.generic import ListView
 
 from articles.models import Article
@@ -21,12 +20,18 @@ class TagView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['articles_data'] = (Article.objects.filter(tags_a__slug=self.kwargs['slug'], is_published=True).
+        articles = (Article.objects.filter(tags_a__slug=self.kwargs['slug'], is_published=True).
                                     prefetch_related('tags_a'))
-        context['products_data'] = (Product.objects.filter(tags_p__slug=self.kwargs['slug'], in_catalog=True).
+        # cache_articles = cache.get_or_set('articles', articles, 10)
+        context['articles_data'] = articles
+        products = (Product.objects.filter(tags_p__slug=self.kwargs['slug'], in_catalog=True).
                                     prefetch_related('tags_p'))
-        context['services_data'] = (ServiceItem.objects.filter(tags_s__slug=self.kwargs['slug']).
+        # cache_products = cache.get_or_set('products', products, 10)
+        context['products_data'] = products
+        services = (ServiceItem.objects.filter(tags_s__slug=self.kwargs['slug']).select_related('service').
                                     prefetch_related('tags_s'))
+        # cache_services = cache.get_or_set('services', services, 10)
+        context['services_data'] = services
         return context
 
     def get_queryset(self):
