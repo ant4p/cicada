@@ -30,21 +30,19 @@
       {% if c.email_url %}
 
       <a class="contacts__contact text text--big is-mail" href="mailto:{{ c.email_url }}">{{ c.email_title }}
-        <pre> </pre>
-
-
-          <svg class="copyBtn" id="copyButton" width="32" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" fill="white" clip-rule="evenodd" d="M6.995 5.006L7 0h5.005v13.996H2V5.011l4.995-.005zM5.998 3.99V.98L2.996 3.989h3.002zM13.002 2H14v14H4v-1.001h9.002V2z"></path>
-          </svg>
-
-      </a>
+          <pre> </pre>
+            <button type="button" class="cbtn" >
+              <svg class="copyBtn" id="copyButton" width="32" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" fill="white" clip-rule="evenodd" d="M6.995 5.006L7 0h5.005v13.996H2V5.011l4.995-.005zM5.998 3.99V.98L2.996 3.989h3.002zM13.002 2H14v14H4v-1.001h9.002V2z"></path>
+              </svg>
+            </button>
+        </a>
 
 <script>
   const outerBlock = document.querySelector('.contacts__contact.is-mail')
-  const innerBlock = document.querySelector('.copyBtn')
+  const innerBlock = document.querySelector('.cbtn')
 
-
-  outerBlock.addEventListener('click',(event) => {
+  outerBlock.addEventListener('click', (event) => {
   innerBlock.click();
   event.stopPropagation();
   });
@@ -52,16 +50,13 @@
   document.getElementById('copyButton').addEventListener("click", () => {
    const textToCopy = document.querySelector('.contacts__contact.text.text--big.is-mail').innerText;
     navigator.clipboard.writeText(textToCopy)
-
       .then(() => {
-      alert("all good");
+      alert("Почта скопирована");
       })
       .catch(err => {
         alert("Ошибка при копировании текста: " + err);
       });
-
   });
-
 </script>
 
       {% else %}
