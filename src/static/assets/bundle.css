@@ -1563,7 +1563,11 @@ hr {
 	.contacts__contact.is-mail:hover {
 		background-color: #ffc121
 	}
+	.contacts__contact.is-mail:hover .copyBtn {
+    opacity: 1;
+    }
 }
+
 
 @media (hover: hover) {
 	.contacts__contact.is-phone:hover {
@@ -2159,4 +2163,10 @@ hr {
 	bottom: 20px;
 	cursor: pointer;
 	transition: all .3s ease-in-out;
+}
+
+.copyBtn {
+    position: relative;
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
 }
