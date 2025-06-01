@@ -28,6 +28,7 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('articles/', include('articles.urls', namespace='articles')),
     path('tags/', include('tags.urls', namespace='tags')),
+    path('portfolio/', include('portfolio.urls', namespace='portfolio')),
     path('robots.txt', ShowRobotsView.as_view(content_type='text/plain'), name='robots'),
 ]
 

@@ -37,27 +37,8 @@
               </svg>
             </button>
         </a>
+        <script type="text/javascript" src="{% static 'modules/SaveToBufferButton.js' %}"></script>
 
-<script>
-  const outerBlock = document.querySelector('.contacts__contact.is-mail')
-  const innerBlock = document.querySelector('.cbtn')
-
-  outerBlock.addEventListener('click', (event) => {
-  innerBlock.click();
-  event.stopPropagation();
-  });
-
-  document.getElementById('copyButton').addEventListener("click", () => {
-   const textToCopy = document.querySelector('.contacts__contact.text.text--big.is-mail').innerText;
-    navigator.clipboard.writeText(textToCopy)
-      .then(() => {
-      alert("Почта скопирована");
-      })
-      .catch(err => {
-        alert("Ошибка при копировании текста: " + err);
-      });
-  });
-</script>
 
       {% else %}
 

@@ -13,6 +13,8 @@ class Contacts(models.Model):
     email_title = models.CharField(max_length=50, blank=True, null=True, default='___@mail.ru', verbose_name='Электронная почта - ____@___.__')
     email_url = models.CharField(max_length=200, blank=True, null=True, default='',
                             verbose_name='Ссылка на электронную почту')
+    vk_title = models.CharField(max_length=50, blank=True, null=True, default='Вконтакте', verbose_name='Вконтакте')
+    vk_url = models.URLField(max_length=200, blank=True, null=True, default='', verbose_name='Ссылка на группу Вконтакте - https://vk.com/______')
 
     class Meta:
         db_table = 'contacts'

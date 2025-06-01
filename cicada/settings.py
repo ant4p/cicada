@@ -62,7 +62,9 @@ INSTALLED_APPS = [
     'products',
     'articles',
     'tags',
+    'portfolio',
 ]
+
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar',]
 

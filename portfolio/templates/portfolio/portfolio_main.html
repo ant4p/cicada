@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<main class="main">
+<section class="portfolio">
+    <div class="portfolio__inner container">
+        <div class="section-header">
+            <h2 class="section-header__title text text--main-2-light">Порфолио</h2>
+            <div class="section-header__subtitle title">Наши лучшие работы</div>
+        </div>
+        <article class="portfolio-product">
+            <div class="portfolio-product__container">
+                <div class="container-sm">
+                    <div class="row justify-content-center">
+                        <div class="col col-md-10">
+                            <div class="gallery-container" id="animated-thumbnails-gallery">
+
+                                {% if items %}
+                                {% for i in items %}
+                                {% if i.image %}
+
+                                <a class="gallery-item" style="width: auto max-width: 530px;" src="{{ i.image.url }}" data-sub-html="<h4> {{ i.title }}</h4>">
+                                    <img class="img-responsive" src="{{ i.image.url}}" >
+                                </a>
+
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!--{% include 'portfolio/portfolio_items_list.html' %}-->
+
+</main>
+
+<script>
+  lightGallery(document.getElementById('animated-thumbnails-gallery'), {
+  thumbnail: true,
+  plugins: [
+  lgZoom,
+  lgThumbnail
+  ]
+  });
+</script>
+
+
+
+{% endblock content %}
+
+
+
+

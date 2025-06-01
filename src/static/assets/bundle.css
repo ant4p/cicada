@@ -1561,10 +1561,15 @@ hr {
 
 @media (hover: hover) {
 	.contacts__contact.is-mail:hover {
-		background-color: #ffc121
+		background-color: #ffc121;
+
+        opacity: 0,2;
 	}
 	.contacts__contact.is-mail:hover .copyBtn {
-    opacity: 1;
+        opacity: 1;
+    }
+    .contacts__contact.is-mail:hover {
+
     }
 }
 
@@ -1591,6 +1596,11 @@ hr {
 	.contacts__contact {
 		height: 150px
 	}
+	.contacts__contact.is-mail:hover .copyBtn {
+
+    opacity: 0.1;
+    pointer-events: none;
+    }
 }
 
 .address__title {
@@ -2169,4 +2179,23 @@ hr {
 
     opacity: 0.1;
     transition: opacity 0.3s ease;
+}
+
+.gallery-info {
+  text-align: center;
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.header .lead {
+  max-width: 620px;
+}
+
+/** Below CSS is completely optional **/
+
+.gallery-item {
+  width: 200px;
+  padding: 5px;
 }

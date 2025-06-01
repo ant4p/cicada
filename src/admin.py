@@ -15,9 +15,11 @@ class ContactsAdmin(admin.ModelAdmin):
         'phone_url',
         'email_title',
         'email_url',
+        'vk_title',
+        'vk_url',
     ]
 
-    list_display = ( 'title', 'whatsapp_url', 'telegram_url', 'phone_url', 'email_url', )
+    list_display = ( 'title', 'whatsapp_url', 'telegram_url', 'phone_url', 'email_url', 'vk_url', )
     readonly_fields = ('title', )
 
 class IndexVideoAdmin(admin.ModelAdmin):
