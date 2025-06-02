@@ -57,8 +57,11 @@ def get_random_product_4():
 def get_random_product_2():
     products = Product.objects.filter(in_catalog=True).select_related('category')
     products_cache = cache.get_or_set('products', products, 10)
-    try:
-        random_products = random.choices(products_cache, k=2)
-        return random_products
-    except IndexError:
-        pass
+    if len(products_cache) < 2:
+        return products_cache
+    else:
+        try:
+            random_products = random.sample(list(products_cache), k=2, counts=None)
+            return random_products
+        except IndexError:
+            pass

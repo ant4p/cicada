@@ -32,7 +32,7 @@
             {% for p in products %}
 
             <swiper-slide>
-                <a href="{% url 'services:services_item' p.service.slug %}" class="print__link">
+                <a href="{% url 'services:services_item' p.service.slug %}" class="print__link" style="display:inline;">
 
                     {% if p.title_image %}
 

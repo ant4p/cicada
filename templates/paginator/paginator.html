@@ -1,0 +1,51 @@
+<nav aria-label="nav">
+
+        <div class="articles__pagination">
+
+            {% if page_obj.has_other_pages %}
+            {% if page_obj.has_previous %}
+
+            <a class="page-item" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                <button class="articles__pagination-button button is-arrow" type="button">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 13L1 7L7 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </a>
+
+            {% endif %}
+
+
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+
+            <a class="page-item active" href="?page={{ p }}">
+                <button class="articles__pagination-button is-active text" type="button">{{ p }}</button>
+            </a>
+
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+
+            <a class="page-item" href="?page={{ p }}">
+                <button class="articles__pagination-button text" type="button">{{ p }}</button>
+            </a>
+
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+
+            <a class="page-item" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                <button class="articles__pagination-button is-arrow" type="button">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </a>
+
+            {% endif %}
+        </div>
+
+</nav>
+
+{% endif %}
+

@@ -29,11 +29,11 @@ def get_random_services_1_9():
         services = ServiceItem.objects.filter(service=element).select_related('service')
     except:
         services = []
-    if len(services) < 9:
+    if len(services) <= 9:
         return services
     else:
         try:
-            random_services = random.choices(services, k=9)
+            random_services = random.sample(list(services), k=9, counts=None)
             return random_services
         except IndexError:
             pass
@@ -68,11 +68,11 @@ def get_random_services_2_9():
     except IndexError:
         services = []
 
-    if len(services) < 9:
+    if len(services) <= 9:
         return services
     else:
         try:
-            random_services = random.choices(cache_services, k=9)
+            random_services = random.sample(list(services), k=9, counts=None)
             return random_services
         except IndexError:
             pass

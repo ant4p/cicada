@@ -15,6 +15,7 @@ class ServicesListView(ListView):
 class ServiceItemView(ListView):
     template_name = 'services/service.html'
     context_object_name = 'item'
+    paginate_by = 5
 
     def get_queryset(self):
         return (ServiceItem.objects.filter(service__slug=self.kwargs['slug']).

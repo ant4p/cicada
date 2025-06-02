@@ -7,6 +7,8 @@ from articles.models import Article
 class ArticlesListView(ListView):
     template_name = 'articles/articles_main.html'
     context_object_name = 'articles_list'
+    paginate_by = 9
+
 
     def get_queryset(self):
         return Article.objects.all()

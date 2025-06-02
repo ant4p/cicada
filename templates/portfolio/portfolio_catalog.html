@@ -1,0 +1,63 @@
+{% load portfolio_tags %}
+{% load cache %}
+
+<section class="print">
+    <div class="print__inner container">
+        <div class="section-header">
+            <h2 class="section-header__title text text--main-2-light">Портфолио</h2>
+            <div class="section-header__subtitle title">Примеры наших работ</div>
+        </div>
+
+        <swiper-container class="print__slider" slides-per-view="1.4" space-between="10" centered-slides="true">
+
+
+            {% get_random_portfolio_items_9 as items %}
+
+
+            {%  if items %}
+            {% for i in items %}
+
+            <swiper-slide>
+                <a href="{% url 'portfolio:portfolio'  %}" class="print__link" style="display:inline;">
+
+                    {% if i.image %}
+
+                    <img src="{{ i.image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
+
+                    {% endif %}
+
+                </a>
+            </swiper-slide>
+
+            {% endfor %}
+            {% endif %}
+
+        </swiper-container>
+
+        <ul class="print__list">
+
+            {% get_random_portfolio_items_9 as items %}
+
+            {%  if items %}
+            {% for i in items %}
+
+            <li class="print__item">
+                <a href="{% url 'portfolio:portfolio' %}" class="print__link">
+
+                    {% if i.image %}
+
+                    <img src="{{ i.image.url }}" alt="Продукт" decoding="async" loading="lazy" class="print__image">
+
+                    {% endif %}
+
+                </a>
+            </li>
+
+            {% endfor %}
+            {% endif %}
+
+            <li class="print__item">
+            </li>
+        </ul>
+    </div>
+</section>
