@@ -16,6 +16,7 @@ class Article(models.Model):
         db_table = 'article'
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+        ordering = ['-id']
 
     def __str__(self):
         return self.title
