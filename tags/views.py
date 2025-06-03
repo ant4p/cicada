@@ -17,7 +17,6 @@ class TagsListView(ListView):
 class TagView(ListView):
     template_name = 'tags/tag.html'
 
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         articles = (Article.objects.filter(tags_a__slug=self.kwargs['slug'], is_published=True).
