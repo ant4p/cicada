@@ -11,6 +11,7 @@ class PortfolioItem(models.Model):
         db_table = 'portfolio_items'
         verbose_name = 'Портфолио'
         verbose_name_plural = 'Портфолио'
+        ordering = ['-id']
 
     def __str__(self):
         return self.title
