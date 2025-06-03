@@ -30,11 +30,16 @@ class ServiceItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     content = models.TextField(blank=True, verbose_name='Текст')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Изображение (Квадрат min_420x420px)')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d',
+                                    default=None, null=True, blank=True,
+                                    verbose_name='Изображение (Квадрат min_420x420px)'
+                                                 'или прямоугольник(ширина больше высоты)')
     price = models.PositiveSmallIntegerField(verbose_name='Цена', blank=True, null=True)
-    price_choice = models.CharField(max_length=10, choices=PRICE_CHOICE, default='Р', null=True, blank=True, verbose_name='Значение цены')
+    price_choice = models.CharField(max_length=10, choices=PRICE_CHOICE,
+                                    default='Р', null=True, blank=True, verbose_name='Значение цены')
     show_contacts = models.BooleanField(verbose_name="Показать контакты", default=True)
-    service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='Service', verbose_name='Относится к услуге')
+    service = models.ForeignKey(Service, on_delete=models.PROTECT,
+                                related_name='Service', verbose_name='Относится к услуге')
     tags_s = models.ManyToManyField(Tag, blank=True, related_name='tags_s', verbose_name='Тэги')
 
     class Meta:

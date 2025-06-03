@@ -5,7 +5,8 @@ class PortfolioItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     image = models.ImageField(upload_to='photos/%Y/%m/%d', default='', null=True, blank=True,
-                                    verbose_name='Изображение')
+                                    verbose_name='Изображение (Квадрат min_420x420px) '
+                                                 'или прямоугольник(ширина больше высоты)')
 
     class Meta:
         db_table = 'portfolio_items'
