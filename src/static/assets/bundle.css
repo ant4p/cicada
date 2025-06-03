@@ -2197,5 +2197,8 @@ hr {
 
 .gallery-item {
   width: 182px;
+  height: 182px;
   padding: 5px;
+  background-position: center;
+  background-size: contain;
 }
