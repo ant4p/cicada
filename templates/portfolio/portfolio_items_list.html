@@ -4,7 +4,7 @@
     <div class="portfolio__inner container">
         <div class="section-header">
             <h2 class="section-header__title text text--main-2-light">Портфолио</h2>
-            <div class="section-header__subtitle title">Наши лучшие работы</div>
+            <div class="section-header__subtitle title">Наши работы</div>
         </div>
         <article class="portfolio-product">
             <div class="portfolio-product__container">
@@ -15,7 +15,7 @@
 
                               {% if items %}
                               {% for i in items %}
-                              {% if i.image %}
+                              {% if i.image and i.title %}
 
                               <a class="gallery-item" src="{{ i.image.url }}" data-sub-html="<h4> {{ i.title }}</h4>">
                                 <img class="img-responsive" style="border-radius:10px;" src="{{ i.image.url}}" >

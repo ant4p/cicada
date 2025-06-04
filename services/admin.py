@@ -24,6 +24,7 @@ class ServiceItemAdmin(admin.ModelAdmin):
         'service',
         'title_image',
         'post_title_image',
+        'get_title_image_size',
         'tags_s',
         'content',
         'price',
@@ -32,9 +33,18 @@ class ServiceItemAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
-        'post_title_image'
+        'post_title_image',
+        'get_title_image_size',
     ]
-    list_display = ('title', 'service','show_contacts', 'post_title_image', 'price', 'price_choice', )
+    list_display = (
+        'title',
+        'service',
+        'show_contacts',
+        'post_title_image',
+        'get_title_image_size',
+        'price',
+        'price_choice',
+    )
     list_display_links = ('title', )
     list_per_page = 10
     list_editable = ('service', 'show_contacts', 'price', 'price_choice', )
@@ -55,6 +65,10 @@ class ServiceItemAdmin(admin.ModelAdmin):
         if ServiceItem.title_image:
             return mark_safe(f"<img src='{ServiceItem.title_image.url}' width=75>")
         return 'Нет фото'
+
+    @admin.display(description='Размер')
+    def get_title_image_size(self, obj):
+        return (f'{obj.title_image.size / 1024:.2f} Кб')
 
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(ServiceItem, ServiceItemAdmin)

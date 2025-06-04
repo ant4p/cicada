@@ -1,6 +1,8 @@
-from PIL import Image
 from django.db import models
 from django.urls import reverse
+from easy_thumbnails.fields import ThumbnailerImageField
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 from tags.models import Tag
 
@@ -38,31 +40,43 @@ class Product(models.Model):
     in_catalog = models.BooleanField(default=True, verbose_name='В каталоге')
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='Category',
                                  verbose_name='Категория')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default='', null=True, blank=True,
-                                    verbose_name='Титульное изображение (Квадрат min_420x420px)'
-                                                 ' или прямоугольник(ширина больше высоты)')
-    image1 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True,
-                               verbose_name='Изображение_1 (Квадрат min_420x420px)'
-                                            'или прямоугольник(ширина больше высоты)')
-    image2 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True,
-                               verbose_name='Изображение_2 (Квадрат min_420x420px)'
-                                            'или прямоугольник(ширина больше высоты)' )
-    image3 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True,
-                               verbose_name='Изображение_3 (Квадрат min_420x420px)'
-                                            'или прямоугольник(ширина больше высоты)')
-    image4 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True,
-                               verbose_name='Изображение_4 (Квадрат min_420x420px)'
-                                            'или прямоугольник(ширина больше высоты)')
-    image5 = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True,
-                               verbose_name='Изображение_5 (Квадрат min_420x420px)'
-                                            'или прямоугольник(ширина больше высоты)')
+    title_image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                        default='', null=True, blank=True,
+                                        resize_source=dict(quality=80, size=(1024, 1024)),
+                                        verbose_name='Титульное изображение (Квадрат min_420x420px)'
+                                                     ' или прямоугольник(ширина больше высоты)')
+    image1 = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                   default=None, null=True, blank=True,
+                                   resize_source=dict(quality=80, size=(1024, 1024)),
+                                   verbose_name='Изображение_1 (Квадрат min_420x420px)'
+                                                'или прямоугольник(ширина больше высоты)')
+    image2 = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                   default=None, null=True, blank=True,
+                                   resize_source=dict(quality=80, size=(1024, 1024)),
+                                   verbose_name='Изображение_2 (Квадрат min_420x420px)'
+                                                'или прямоугольник(ширина больше высоты)')
+    image3 = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                   default=None, null=True, blank=True,
+                                   resize_source=dict(quality=80, size=(1024, 1024)),
+                                   verbose_name='Изображение_3 (Квадрат min_420x420px)'
+                                                'или прямоугольник(ширина больше высоты)')
+    image4 = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                   default=None, null=True, blank=True,
+                                   resize_source=dict(quality=80, size=(1024, 1024)),
+                                   verbose_name='Изображение_4 (Квадрат min_420x420px)'
+                                                'или прямоугольник(ширина больше высоты)')
+    image5 = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                   default=None, null=True, blank=True,
+                                   resize_source=dict(quality=80, size=(1024, 1024)),
+                                   verbose_name='Изображение_5 (Квадрат min_420x420px)'
+                                                'или прямоугольник(ширина больше высоты)')
     tags_p = models.ManyToManyField(Tag, blank=True, related_name='tags_p', verbose_name='Тэги')
 
     class Meta:
         db_table = 'product'
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
-
+        ordering = ['-id']
 
     def __str__(self):
         return self.title

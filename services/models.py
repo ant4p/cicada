@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from easy_thumbnails.fields import ThumbnailerImageField
 
 from tags.models import Tag
 
@@ -30,10 +31,11 @@ class ServiceItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     content = models.TextField(blank=True, verbose_name='Текст')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d',
-                                    default=None, null=True, blank=True,
-                                    verbose_name='Изображение (Квадрат min_420x420px)'
-                                                 'или прямоугольник(ширина больше высоты)')
+    title_image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
+                                        default=None, null=True, blank=True,
+                                        resize_source=dict(quality=80, size=(1024, 1024)),
+                                        verbose_name='Изображение (Квадрат min_420x420px)'
+                                                     'или прямоугольник(ширина больше высоты)')
     price = models.PositiveSmallIntegerField(verbose_name='Цена', blank=True, null=True)
     price_choice = models.CharField(max_length=10, choices=PRICE_CHOICE,
                                     default='Р', null=True, blank=True, verbose_name='Значение цены')
@@ -46,6 +48,7 @@ class ServiceItem(models.Model):
         db_table = 'service_item'
         verbose_name = 'Наполнение услуги'
         verbose_name_plural = 'Наполнение услуги'
+        ordering = ['-id']
 
     def __str__(self):
         return self.title
