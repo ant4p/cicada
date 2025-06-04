@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from easy_thumbnails.fields import ThumbnailerImageField
 
+from src.utils import generate_unique_slug
 from tags.models import Tag
 
 
@@ -27,3 +28,16 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('articles:article', kwargs={'slug': self.slug})
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(Article, self.title)
+
+        super(Article, self).save(*args)

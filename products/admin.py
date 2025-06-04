@@ -33,8 +33,8 @@ class ProductAdmin(admin.ModelAdmin):
         'post_image5',
         'get_image5_size',
     ]
-    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
+        'slug',
         'post_title_image',
         'get_title_image_size',
         'post_image1',
@@ -118,7 +118,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ProductCategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
+    fields = [
+        'title',
+        'slug',
+    ]
+    readonly_fields = [
+        'slug',
+    ]
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductCategory, ProductCategoryAdmin)

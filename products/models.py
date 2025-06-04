@@ -2,6 +2,9 @@ from django.db import models
 from django.urls import reverse
 from easy_thumbnails.fields import ThumbnailerImageField
 from PIL import ImageFile
+
+from src.utils import generate_unique_slug
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 from tags.models import Tag
@@ -18,6 +21,19 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(ProductCategory, self.title)
+
+        super(ProductCategory, self).save(*args)
 
 
 class Product(models.Model):
@@ -83,3 +99,16 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('products:product', kwargs={'slug': self.slug})
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(Product, self.title)
+
+        super(Product, self).save(*args)

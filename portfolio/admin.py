@@ -14,10 +14,11 @@ class PortfolioItemAdmin(admin.ModelAdmin):
         'get_size',
         'post_image',
     ]
-    prepopulated_fields = {'slug': ('title', )}
+    # prepopulated_fields = {'slug': ('title', )}
     readonly_fields = [
         'post_image',
         'get_size',
+        'slug',
     ]
     list_display = ('title', 'post_image', 'get_size', )
     list_display_links = ('title', )

@@ -8,7 +8,9 @@ class TagAdmin(admin.ModelAdmin):
         'title',
         'slug',
     ]
-    prepopulated_fields = {'slug': ('title', )}
+    readonly_fields = [
+        'slug',
+    ]
 
     list_display = ('title', )
     list_display_links = ('title', )

@@ -15,10 +15,10 @@ class ArticleAdmin(admin.ModelAdmin):
         'tags_a',
         'content',
     ]
-    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
         'post_title_image',
         'get_title_image_size',
+        'slug',
     ]
     list_display = ('title', 'is_published', 'post_title_image', 'get_title_image_size', )
     list_display_links = ('title', )

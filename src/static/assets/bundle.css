@@ -2199,8 +2199,8 @@ hr {
 /** Below CSS is completely optional **/
 
 .gallery-item {
-  width: 182px;
-  height: 182px;
+  width: 175px;
+  height: 175px;
   padding: 5px;
   background-position: center;
   background-size: contain;

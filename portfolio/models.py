@@ -1,6 +1,10 @@
 from django.db import models
 from easy_thumbnails.fields import ThumbnailerImageField
+
 from PIL import ImageFile
+
+from src.utils import generate_unique_slug
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
@@ -14,6 +18,8 @@ class PortfolioItem(models.Model):
                                     verbose_name='Изображение (Квадрат min_420x420px) '
                                                  'или прямоугольник(ширина больше высоты)')
 
+
+
     class Meta:
         db_table = 'portfolio_items'
         verbose_name = 'Портфолио'
@@ -22,3 +28,17 @@ class PortfolioItem(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(PortfolioItem, self.title)
+
+        super(PortfolioItem, self).save(*args)
+

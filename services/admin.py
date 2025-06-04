@@ -10,8 +10,10 @@ class ServiceAdmin(admin.ModelAdmin):
         'slug',
         'content'
     ]
-    prepopulated_fields = {'slug': ('title',)}
     list_display = ('title',)
+    readonly_fields = [
+        'slug',
+    ]
     list_display_links = ('title',)
     list_per_page = 10
     search_fields = ['title', ]
@@ -31,10 +33,10 @@ class ServiceItemAdmin(admin.ModelAdmin):
         'price_choice',
         'show_contacts',
     ]
-    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = [
         'post_title_image',
         'get_title_image_size',
+        'slug',
     ]
     list_display = (
         'title',

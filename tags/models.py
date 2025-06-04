@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from src.utils import generate_unique_slug
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=15, db_index=True, verbose_name='Заголовок')
@@ -16,3 +18,16 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse('tags:tag', kwargs={'slug': self.slug})
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(Tag, self.title)
+
+        super(Tag, self).save(*args)

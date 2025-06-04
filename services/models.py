@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from easy_thumbnails.fields import ThumbnailerImageField
 
+from src.utils import generate_unique_slug
 from tags.models import Tag
 
 
@@ -21,6 +22,19 @@ class Service(models.Model):
 
     def get_absolute_url(self):
         return reverse('services:services_item', kwargs={'slug': self.slug})
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(Service, self.title)
+
+        super(Service, self).save(*args)
 
 class ServiceItem(models.Model):
     PRICE_CHOICE = (
@@ -55,6 +69,19 @@ class ServiceItem(models.Model):
 
     def get_absolute_url(self):
         return reverse('services:services_item', kwargs={'slug': self.slug})
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if not self.slug:
+            self.slug = generate_unique_slug(ServiceItem, self.title)
+
+        super(ServiceItem, self).save(*args)
 
 
 
