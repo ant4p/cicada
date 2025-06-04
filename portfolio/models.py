@@ -1,10 +1,14 @@
 from django.db import models
+from easy_thumbnails.fields import ThumbnailerImageField
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # Create your models here.
 class PortfolioItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
-    image = models.ImageField(upload_to='photos/%Y/%m/%d', default='', null=True, blank=True,
+    image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d', default='', null=True, blank=True,
+                                  resize_source=dict(quality=90, size=(1024, 1024), sharpen=True),
                                     verbose_name='Изображение (Квадрат min_420x420px) '
                                                  'или прямоугольник(ширина больше высоты)')
 
