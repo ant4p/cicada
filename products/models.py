@@ -22,18 +22,10 @@ class ProductCategory(models.Model):
     def __str__(self):
         return self.title
 
-    def save(
-        self,
-        *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(ProductCategory, self.title)
-
-        super(ProductCategory, self).save(*args)
+        super().save(*args, **kwargs)
 
 
 class Product(models.Model):
@@ -100,15 +92,7 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products:product', kwargs={'slug': self.slug})
 
-    def save(
-        self,
-        *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(Product, self.title)
-
-        super(Product, self).save(*args)
+        super().save(*args, **kwargs)
