@@ -26,7 +26,9 @@ class Contacts(models.Model):
 
 class IndexVideo(models.Model):
     title = models.CharField(max_length=50, verbose_name='Заголовок', default='Видео(главная страница)')
-    video = models.FileField(upload_to='videos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Видео на главной странице' )
+    video = models.FileField(upload_to='videos/%Y/%m/%d',
+                             default=None, null=True, blank=True,
+                             verbose_name='Видео на главной странице' )
 
     class Meta:
         db_table = 'title_video'
@@ -37,7 +39,8 @@ class IndexVideo(models.Model):
         return self.title
 
 class UserAgreement(models.Model):
-    title = models.CharField(max_length=50, verbose_name='Заголовок', default='Пользовательское соглашение')
+    title = models.CharField(max_length=50, verbose_name='Заголовок',
+                             default='Пользовательское соглашение')
     content = models.TextField(blank=True, verbose_name='Текст соглашения')
 
     class Meta:
@@ -49,7 +52,8 @@ class UserAgreement(models.Model):
         return self.title
 
 class TitleImageCooperation(models.Model):
-    title = models.CharField(max_length=50, verbose_name='Заголовок', default='Титульное изображение(блок сотрудничество)')
+    title = models.CharField(max_length=50, verbose_name='Заголовок',
+                             default='Титульное изображение(блок сотрудничество)')
     title_image = models.ImageField(upload_to='photos/%Y/%m/%d',
                                     default=None, null=True, blank=True,
                                     verbose_name='Титульное изображение (Абстракция Высокое_качество)'
@@ -70,12 +74,16 @@ class CaseCooperation(models.Model):
                                     verbose_name='Титульное изображение (Квадрат min_420x420px)'
                                                  'или прямоугольник(ширина больше высоты)'
                                                  'загружать сразу оптимизированное - размер до 300Кб')
-    title_case = models.CharField(max_length=100, verbose_name='Заголовок кейса', default='Кейс: Создание детских игрушек')
-    title_task = models.CharField(max_length=100, verbose_name='Заголовок блока задача',default='Задача клиента:')
+    title_case = models.CharField(max_length=100, verbose_name='Заголовок кейса',
+                                  default='Кейс: Создание детских игрушек')
+    title_task = models.CharField(max_length=100, verbose_name='Заголовок блока задача'
+                                  ,default='Задача клиента:')
     text_task = models.TextField(blank=True, verbose_name='Текст блока задача')
-    title_solution = models.CharField(max_length=100, verbose_name='Заголовок блока решение', default='Решение от 3D мастерской  MOSPRINT')
+    title_solution = models.CharField(max_length=100, verbose_name='Заголовок блока решение',
+                                      default='Решение от 3D мастерской  MOSPRINT')
     text_solution = models.TextField(blank=True, verbose_name='Текст блока решение')
-    title_result = models.CharField(max_length=100, verbose_name='Заголовок блока результат', default='Результат:')
+    title_result = models.CharField(max_length=100, verbose_name='Заголовок блока результат',
+                                    default='Результат:')
     text_result = models.TextField(blank=True, verbose_name='Текст блока результат')
 
     class Meta:
