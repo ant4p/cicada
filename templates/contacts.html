@@ -18,7 +18,7 @@
 
       {% if c.phone_url %}
 
-      <a class="contacts__contact text text--big is-phone" href="tel:{{ c.phone_url }}">{{ c.phone_title }}</a>
+      <a class="contacts__contact text text--big is-phone" href="tel:{{ c.phone_url }}"  target="_blank">{{ c.phone_title }}</a>
 
       {% else %}
 
@@ -48,7 +48,7 @@
 
       {% if c.whatsapp_url %}
 
-      <a class="contacts__contact is-whatsapp text text--big" href="{{ c.whatsapp_url }}">{{ c.whatsapp_title }}</a>
+      <a class="contacts__contact is-whatsapp text text--big" href="{{ c.whatsapp_url }}" target="_blank">{{ c.whatsapp_title }}</a>
 
       {% else %}
 
@@ -58,7 +58,7 @@
 
       {% if c.telegram_url %}
 
-      <a class="contacts__contact is-telegram text text--big" href="{{ c.telegram_url }}"> {{ c.telegram_title }}</a>
+      <a class="contacts__contact is-telegram text text--big" href="{{ c.telegram_url }}" target="_blank"> {{ c.telegram_title }}</a>
 
       {% else %}
 
