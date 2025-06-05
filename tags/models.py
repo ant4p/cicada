@@ -19,15 +19,8 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tags:tag', kwargs={'slug': self.slug})
 
-    def save(
-        self,
-        *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(Tag, self.title)
+        super().save(*args, **kwargs)
 
-        super(Tag, self).save(*args)

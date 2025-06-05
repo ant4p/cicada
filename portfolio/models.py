@@ -13,12 +13,10 @@ class PortfolioItem(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
-                                  default='', null=True, blank=True,
+                                  default=None, null=True, blank=False,
                                   resize_source=dict(quality=80, size=(1024, 1024)),
                                     verbose_name='Изображение (Квадрат min_420x420px) '
                                                  'или прямоугольник(ширина больше высоты)')
-
-
 
     class Meta:
         db_table = 'portfolio_items'

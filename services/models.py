@@ -23,18 +23,10 @@ class Service(models.Model):
     def get_absolute_url(self):
         return reverse('services:services_item', kwargs={'slug': self.slug})
 
-    def save(
-        self,
-        *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(Service, self.title)
-
-        super(Service, self).save(*args)
+        super().save(*args,**kwargs)
 
 class ServiceItem(models.Model):
     PRICE_CHOICE = (
@@ -46,7 +38,7 @@ class ServiceItem(models.Model):
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='Slug')
     content = models.TextField(blank=True, verbose_name='Текст')
     title_image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
-                                        default=None, null=True, blank=True,
+                                        default=None, null=True, blank=False,
                                         resize_source=dict(quality=80, size=(1024, 1024)),
                                         verbose_name='Изображение (Квадрат min_420x420px)'
                                                      'или прямоугольник(ширина больше высоты)')
@@ -70,18 +62,10 @@ class ServiceItem(models.Model):
     def get_absolute_url(self):
         return reverse('services:services_item', kwargs={'slug': self.slug})
 
-    def save(
-        self,
-        *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(ServiceItem, self.title)
-
-        super(ServiceItem, self).save(*args)
+        super().save(*args,**kwargs)
 
 
 

@@ -50,7 +50,10 @@ class UserAgreement(models.Model):
 
 class TitleImageCooperation(models.Model):
     title = models.CharField(max_length=50, verbose_name='Заголовок', default='Титульное изображение(блок сотрудничество)')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Абстракция Высокое_качество)')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d',
+                                    default=None, null=True, blank=True,
+                                    verbose_name='Титульное изображение (Абстракция Высокое_качество)'
+                                                 'загружать сразу оптимизированное - размер до 300Кб')
 
     class Meta:
         db_table = 'title_image_cooperation'
@@ -62,11 +65,15 @@ class TitleImageCooperation(models.Model):
 
 class CaseCooperation(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок', default='Кейс(блок сотрудничество)')
-    title_image = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, null=True, blank=True, verbose_name='Титульное изображение (Квадрат min_420x420px)')
+    title_image = models.ImageField(upload_to='photos/%Y/%m/%d',
+                                    default=None, null=True, blank=True,
+                                    verbose_name='Титульное изображение (Квадрат min_420x420px)'
+                                                 'или прямоугольник(ширина больше высоты)'
+                                                 'загружать сразу оптимизированное - размер до 300Кб')
     title_case = models.CharField(max_length=100, verbose_name='Заголовок кейса', default='Кейс: Создание детских игрушек')
     title_task = models.CharField(max_length=100, verbose_name='Заголовок блока задача',default='Задача клиента:')
     text_task = models.TextField(blank=True, verbose_name='Текст блока задача')
-    title_solution = models.CharField(max_length=100, verbose_name='Заголовок блока решение', default='Решение от мастерской 3D CICADA')
+    title_solution = models.CharField(max_length=100, verbose_name='Заголовок блока решение', default='Решение от 3D мастерской  MOSPRINT')
     text_solution = models.TextField(blank=True, verbose_name='Текст блока решение')
     title_result = models.CharField(max_length=100, verbose_name='Заголовок блока результат', default='Результат:')
     text_result = models.TextField(blank=True, verbose_name='Текст блока результат')

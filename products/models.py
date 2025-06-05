@@ -1,3 +1,5 @@
+from importlib.metadata import requires
+
 from django.db import models
 from django.urls import reverse
 from easy_thumbnails.fields import ThumbnailerImageField
@@ -8,7 +10,6 @@ from src.utils import generate_unique_slug
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 from tags.models import Tag
-
 
 class ProductCategory(models.Model):
     title = models.CharField(max_length=50, verbose_name='Заголовок')
@@ -49,7 +50,7 @@ class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='Category',
                                  verbose_name='Категория')
     title_image = ThumbnailerImageField(upload_to='photos/%Y/%m/%d',
-                                        default='', null=True, blank=True,
+                                        default=None, null=True, blank=False,
                                         resize_source=dict(quality=80, size=(1024, 1024)),
                                         verbose_name='Титульное изображение (Квадрат min_420x420px)'
                                                      ' или прямоугольник(ширина больше высоты)')

@@ -1,4 +1,5 @@
-from django.utils.text import slugify
+from slugify import slugify
+
 
 def generate_unique_slug(item, field):
     main_slug = slugify(field)
