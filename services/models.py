@@ -16,6 +16,7 @@ class Service(models.Model):
         db_table = 'service'
         verbose_name = 'Вид Услуги'
         verbose_name_plural = 'Виды Услуг'
+        ordering = ['id']
 
 
     def __str__(self):
