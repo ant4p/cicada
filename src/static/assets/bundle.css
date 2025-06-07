@@ -1917,6 +1917,10 @@ hr {
 
 .full-product__navigation-button {
 	display: flex;
+	background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 2px;
+    color: #999;
+    cursor: pointer;
 	align-items: center;
 	justify-content: center;
 	position: absolute;
@@ -1924,7 +1928,7 @@ hr {
 	width: 36px;
 	height: 36px;
 	transform: translateY(-50%);
-	border: 1px solid var(--color-main);
+
 	border-radius: 4px;
 	z-index: 1
 }
@@ -1938,7 +1942,8 @@ hr {
 }
 
 .full-product__navigation-button.swiper-button-disabled {
-	opacity: .4
+	opacity: .3
+
 }
 
 .full-product__slider {
@@ -2209,4 +2214,50 @@ hr {
 .page-item:hover {
     background-color: #0071bc;
      border-radius: 5px;
+}
+
+
+
+.lg-next,
+.lg-prev {
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  color: #999;
+  cursor: pointer;
+  display: block;
+  font-size: 22px;
+  margin-top: -10px;
+  padding: 8px 10px 9px;
+  position: absolute;
+  top: 50%;
+  z-index: 1084;
+  outline: none;
+  border: none;
+}
+.lg-next.disabled,
+.lg-prev.disabled {
+  opacity: 0 !important;
+  cursor: default;
+}
+.lg-next:hover:not(.disabled),
+.lg-prev:hover:not(.disabled) {
+  color: #fff;
+}
+.lg-single-item .lg-next,
+.lg-single-item .lg-prev {
+  display: none;
+}
+
+.lg-next {
+  right: 20px;
+}
+.lg-next:before {
+  content: "\e095";
+}
+
+.lg-prev {
+  left: 20px;
+}
+.lg-prev:after {
+  content: "\e094";
 }
