@@ -8,3 +8,6 @@ db.sqlite3
 /services/migrations/
 /src/migrations/
 /tags/migrations/
+.vscode
+settings.json
+.pylintrc
